@@ -1,0 +1,18 @@
+model_config:
+  model_type: ST-GCN
+  in_channels: 3
+  num_class: 6
+  dropout: 0.5
+  graph_layout: "nvidia"
+  graph_strategy: "spatial"
+  edge_importance_weighting: True
+dataset_config:
+  label_map:
+    sitting_down: 0
+    getting_up: 1
+    sitting: 2
+    standing: 3
+    walking: 4
+    jumping: 5
+  batch_size: 16
+  workers: 1

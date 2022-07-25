@@ -1,0 +1,8 @@
+# Notebook checkpoints file.
+.ipynb_checkpoints
+.vscode
+
+# Python cache files.
+*.pyc
+
+

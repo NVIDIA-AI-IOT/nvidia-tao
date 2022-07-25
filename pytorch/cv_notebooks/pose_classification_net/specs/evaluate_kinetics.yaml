@@ -1,0 +1,17 @@
+model_config:
+  model_type: ST-GCN
+  in_channels: 3
+  num_class: 5
+  dropout: 0.5
+  graph_layout: "openpose"
+  graph_strategy: "spatial"
+  edge_importance_weighting: True
+dataset_config:
+  label_map:
+    front_raises: 0
+    pull_ups: 1
+    clean_and_jerk: 2
+    presenting_weather_forecast: 3
+    deadlifting: 4
+  batch_size: 16
+  workers: 1
