@@ -1,0 +1,17 @@
+gpu_id: 0
+input_width: 960
+input_height: 544
+trt_config:
+  data_type: FP32
+  workspace_size: 1024
+  min_batch_size: 1
+  opt_batch_size: 8
+  max_batch_size: 8
+dataset_config:
+  num_classes: 91
+  batch_size: -1
+model_config:
+  num_feature_levels: 2
+  num_queries: 300  
+  with_box_refine: True
+  aux_loss: False

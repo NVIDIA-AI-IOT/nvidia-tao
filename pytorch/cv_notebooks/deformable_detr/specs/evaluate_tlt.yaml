@@ -1,0 +1,16 @@
+num_gpus: 1
+conf_threshold: 0.5
+dataset_config:
+  test_data_sources:
+    image_dir: /data/coco2017/images/val2017/
+    json_file: /data/coco2017/annotations/instances_val2017.json
+  eval_class_ids: [1]
+  num_classes: 91
+  batch_size: 8
+  workers: 8
+model_config:
+  num_feature_levels: 2
+  dec_layers: 6
+  enc_layers: 6
+  num_queries: 300
+  with_box_refine: True
