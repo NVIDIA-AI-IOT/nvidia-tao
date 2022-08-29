@@ -1,4 +1,4 @@
-v#!/bin/sh
+#!/bin/sh
 
 # Update ubuntu to 20.04
 sudo apt update && sudo apt upgrade && sudo apt-get install libcudnn8 libcudnn8-dev libnccl-dev libnccl2 --allow-change-held-packages && sudo apt dist-upgrade
@@ -38,14 +38,7 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 
 # Install dependencies
 python3.6 -m pip install  /content/drive/MyDrive/tf/general_whl/*.whl
-python3.6 -m pip install -r /content/drive/MyDrive/tf/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
-
-# Patch numba and keras keras
-patch -run -d /usr/local/lib/python3.6/dist-packages/numba < /usr/local/lib/python3.6/dist-packages/third_party/numba/monkey.patch
-patch -run -d /usr/local/lib/python3.6/dist-packages/keras < /usr/local/lib/python3.6/dist-packages/third_party/keras/monkey.patch
+python3.6 -m pip install --ignore-installed PyYAML -r /content/drive/MyDrive/tf/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
 python3.6 -m pip install /content/drive/MyDrive/tf/codebase_whl/*.whl
-
-# Append PYTHONPATH
-%env PYTHONPATH=/env/python:/opt/nvidia/:/usr/local/lib/python3.6/dist-packages/third_party/nvml'
