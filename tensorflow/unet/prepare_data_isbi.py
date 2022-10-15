@@ -28,7 +28,7 @@ def parse_args(args=None):
         "--output_dir",
         type=str,
         required=True,
-        help="Ouput directory to processes images from ISBI Tiff files."
+        help="Output directory to processes images from ISBI Tiff files."
     )
 
     return parser.parse_args(args)

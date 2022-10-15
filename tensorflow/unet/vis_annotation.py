@@ -97,7 +97,7 @@ def build_command_line_parser():
         '--vis_dir',
         type=str,
         default=None,
-        help='Path to a folder where the segmentation overlayed images are saved.'
+        help='Path to a folder where the segmentation overlaid images are saved.'
     )
     parser.add_argument(
         '--num_classes',
