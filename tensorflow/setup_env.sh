@@ -22,7 +22,6 @@ ln -sf /usr/bin/python3.6 /usr/bin/python3
 ln -sf /usr/bin/python3.6 /usr/local/bin/python
 
 python3.6 -m pip install --upgrade pip
-python3.6 -m pip install google-colab
 python3.6 -m pip install nvidia-pyindex
 
 # Install Tensorflow
@@ -38,7 +37,7 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 
 # Install dependencies
 python3.6 -m pip install  /content/drive/MyDrive/tf/general_whl/*.whl
-python3.6 -m pip install --ignore-installed PyYAML -r /content/drive/MyDrive/tf/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
+python3.6 -m pip install --ignore-installed PyYAML -r /content/drive/MyDrive/ColabNotebooks/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
 python3.6 -m pip install /content/drive/MyDrive/tf/codebase_whl/*.whl
