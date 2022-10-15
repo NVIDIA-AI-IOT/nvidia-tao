@@ -32,7 +32,7 @@ def parse_args(args=None):
         "--output_dir",
         type=str,
         required=True,
-        help="Ouput directory to TLT val dataset."
+        help="Output directory to TLT val dataset."
     )
 
     parser.add_argument(

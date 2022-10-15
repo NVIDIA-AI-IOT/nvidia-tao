@@ -158,7 +158,7 @@ def parse_args(args=None):
         "--output_dir",
         type=str,
         required=True,
-        help="Ouput directory to TLT dataset."
+        help="Output directory to TLT dataset."
     )
 
     return parser.parse_args(args)

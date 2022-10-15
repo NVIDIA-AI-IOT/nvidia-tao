@@ -26,14 +26,14 @@ def parse_args(args=None):
         "--output_dir",
         type=str,
         required=True,
-        help="Ouput directory to TLT train/eval dataset."
+        help="Output directory to TLT train/eval dataset."
     )
 
     return parser.parse_args(args)
 
 
 def prepare_data(input_dir, img_list, output_dir):
-    """Crop the license plates from the orginal images."""
+    """Crop the license plates from the original images."""
 
     target_img_path = os.path.join(output_dir, "image")
     target_label_path = os.path.join(output_dir, "label")
