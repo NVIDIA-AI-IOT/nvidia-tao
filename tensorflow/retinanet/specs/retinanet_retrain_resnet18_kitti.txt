@@ -18,7 +18,7 @@ retinanet_config {
 }
 training_config {
   enable_qat: False
-  pruned_model_path: "/results/retinanet/experiment_dir_pruned/retinanet_resnet18_pruned.tlt"
+  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/retinanet_resnet18_pruned.tlt"
   batch_size_per_gpu: 8
   num_epochs: 10
   n_workers: 2
@@ -60,7 +60,7 @@ augmentation_config {
 }
 dataset_config {
   data_sources: {
-    tfrecords_path: "/content/drive/MyDrive/pointpillars_data/tfrecords/kitti_train*"
+    tfrecords_path: "TAO_DATA_PATH/tfrecords/kitti_train*"
   }
   target_class_mapping {
       key: "car"
@@ -87,7 +87,7 @@ dataset_config {
       value: "car"
   }
    validation_data_sources: {
-    image_directory_path: "/content/drive/MyDrive/pointpillars_data/val/image"
-    label_directory_path: "/content/drive/MyDrive/pointpillars_data/val/label"
+    image_directory_path: "TAO_DATA_PATH/val/image"
+    label_directory_path: "TAO_DATA_PATH/val/label"
   } 
 }

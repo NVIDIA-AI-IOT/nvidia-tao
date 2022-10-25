@@ -1,7 +1,7 @@
 {
     "mount_dir_path" :"",
-    "org_data_dir" : "/results/gesturenet/original",
-    "post_data_dir" : "/results/gesturenet/extracted",
+    "org_data_dir" : "TAO_DATA_PATH/original",
+    "post_data_dir" : "TAO_DATA_PATH/extracted",
     "set_list": {
         "train_val": [
             "data"

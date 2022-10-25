@@ -4,8 +4,8 @@ validation_subjects: ['cohface_processed/1/0',
 ]
 test_subjects: ['cohface_processed/1/0',
 ]
-input_directory_path: /content/drive/MyDrive/heartratenet_data
-data_directory_output_path: /content/drive/MyDrive/heartratenet_data/processed
+input_directory_path: TAO_DATA_PATH/
+data_directory_output_path: TAO_DATA_PATH/processed
 image_crop_size: 72 # Crop size. Image input size to model.
 last_frame: 'all' # Last frame to preprocess up to.
 start_frame: 60

@@ -1,7 +1,7 @@
 seed: 123
 use_amp: False
 warmup_steps: 1000
-checkpoint: "/results/mask_rcnn/pretrained_resnet50/pretrained_instance_segmentation_vresnet50/resnet50.hdf5"
+checkpoint: "EXPERIMENT_DIR_PATH/pretrained_resnet50/pretrained_instance_segmentation_vresnet50/resnet50.hdf5"
 learning_rate_steps: "[10000, 15000, 20000]"
 learning_rate_decay_levels: "[0.1, 0.02, 0.01]"
 total_steps: 25000
@@ -18,9 +18,9 @@ data_config{
     image_size: "(832, 1344)"
     augment_input_data: True
     eval_samples: 500
-    training_file_pattern: "/content/drive/MyDrive/det_data/val*.tfrecord"
-    validation_file_pattern: "/content/drive/MyDrive/det_data/val*.tfrecord"
-    val_json_file: "/content/drive/MyDrive/det_data/annotations/instances_val2017.json"
+    training_file_pattern: "TAO_DATA_PATH/val*.tfrecord"
+    validation_file_pattern: "TAO_DATA_PATH/val*.tfrecord"
+    val_json_file: "TAO_DATA_PATH/annotations/instances_val2017.json"
 
     # dataset specific parameters
     num_classes: 91

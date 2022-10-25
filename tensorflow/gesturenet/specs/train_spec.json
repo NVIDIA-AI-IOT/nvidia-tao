@@ -1,7 +1,7 @@
 {
     "random_seed": 108,
     "batch_size": 1,
-    "output_experiments_fld": "/results/gesturenet/",
+    "output_experiments_fld": "EXPERIMENT_DIR_PATH/",
     "save_weights_path": "model",
     "trainer": {
         "class": "ClassifyNetTrainer",
@@ -34,13 +34,13 @@
         "base_model": "resnet_vanilla",
         "num_layers": 18,
         "use_batch_norm": true,
-        "weights_init": "/results/gesturenet/pretrained_models/gesturenet_vtrainable_v1.0/model.tlt",
+        "weights_init": "EXPERIMENT_DIR_PATH/pretrained_models/gesturenet_vtrainable_v1.0/model.tlt",
         "add_new_head": false,
         "kernel_regularizer_type": "l2",
         "kernel_regularization_factor": 0.001
     },
     "dataset": {
-        "image_root_path": "/results/gesturenet/",
+        "image_root_path": "TAO_DATA_PATH/",
         "classes": {
             "thumbs_up": 0,
             "fist": 1,
@@ -49,7 +49,7 @@
             "two": 4,
             "random": 5
         },
-        "data_path": "/results/gesturenet/data.json",
+        "data_path": "TAO_DATA_PATH/data.json",
         "num_classes": 6,
         "augmentation": {
             "shear_range": 0.0,
@@ -84,6 +84,6 @@
     },
     "evaluator": {
         "evaluation_exp_name": "results", 
-        "data_path": "/results/gesturenet/data.json"
+        "data_path": "TAO_DATA_PATH/data.json"
     }
 }

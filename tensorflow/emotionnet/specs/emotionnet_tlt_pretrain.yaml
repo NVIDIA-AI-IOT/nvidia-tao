@@ -31,7 +31,7 @@ dataloader:
     root_path: null
     image_extension: png
     tfrecords_directory_path:
-    - /content/drive/MyDrive/emotionnet_data/post_data
+    - TAO_DATA_PATH/post_data
     tfrecords_set_id:
     - ckplus
     ground_truth_folder_name:
@@ -44,7 +44,7 @@ dataloader:
   kpiset_info:
     kpi_root_path: null
     kpi_tfrecords_directory_path:
-    - /content/drive/MyDrive/emotionnet_data/post_data
+    - TAO_DATA_PATH/post_data
     tfrecords_set_id_kpi:
     - ckplus
     ground_truth_folder_name_kpi:
@@ -64,7 +64,7 @@ model:
     activation_type: 'relu'
     dropout_rate: 0.3
     num_class: 6
-    pretrained_model_path: /results/emotionnet/pretrain_models/emotionnet_vtrainable_v1.0/model.tlt
+    pretrained_model_path: EXPERIMENT_DIR_PATH/pretrain_models/emotionnet_vtrainable_v1.0/model.tlt
     frozen_blocks: 2
 loss:
   __class_name__: EmotionNetLoss
@@ -103,7 +103,7 @@ evaluator:
       root_path: null
       image_extension: png
       tfrecords_directory_path:
-      - /content/drive/MyDrive/emotionnet_data/post_data
+      - TAO_DATA_PATH/post_data
       tfrecords_set_id:
       - ckplus
       ground_truth_folder_name:
@@ -116,7 +116,7 @@ evaluator:
     kpiset_info:
       kpi_root_path: null
       kpi_tfrecords_directory_path:
-      - /content/drive/MyDrive/emotionnet_data/post_data
+      - TAO_DATA_PATH/post_data
       tfrecords_set_id_kpi:
       - ckplus
       ground_truth_folder_name_kpi:

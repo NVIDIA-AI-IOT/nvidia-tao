@@ -1,6 +1,6 @@
 training_config {
-  checkpoint: "/results/efficientdet/experiment_dir_pruned/model.tlt"
-  pruned_model_path: "/results/efficientdet/experiment_dir_pruned/model.tlt"
+  checkpoint: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/model.tlt"
+  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/model.tlt"
   train_batch_size: 16
   iterations_per_loop: 10
   checkpoint_period: 2
@@ -18,9 +18,9 @@ training_config {
 dataset_config {
   num_classes: 91
   image_size: "512,512"
-  training_file_pattern: "/content/drive/MyDrive/det_data/train-*"
-  validation_file_pattern: "/content/drive/MyDrive/det_data/val-*"
-  validation_json_file: "/content/drive/MyDrive/det_data/annotations/instances_val2017.json"
+  training_file_pattern: "TAO_DATA_PATH/train-*"
+  validation_file_pattern: "TAO_DATA_PATH/val-*"
+  validation_json_file: "TAO_DATA_PATH/annotations/instances_val2017.json"
   max_instances_per_image: 100
   skip_crowd_during_training: True
 }
