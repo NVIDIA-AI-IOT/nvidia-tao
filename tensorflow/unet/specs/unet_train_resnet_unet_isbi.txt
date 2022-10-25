@@ -46,13 +46,13 @@ dataset_config {
   }
 }
 input_image_type: "grayscale"
-train_images_path:"/content/drive/MyDrive/unet_data/isbi/images/train"
-train_masks_path:"/content/drive/MyDrive/unet_data/isbi/masks/train"
+train_images_path:"TAO_DATA_PATH/isbi/images/train"
+train_masks_path:"TAO_DATA_PATH/isbi/masks/train"
 
-val_images_path:"/content/drive/MyDrive/unet_data/isbi/images/val"
-val_masks_path:"/content/drive/MyDrive/unet_data/isbi/masks/val"
+val_images_path:"TAO_DATA_PATH/isbi/images/val"
+val_masks_path:"TAO_DATA_PATH/isbi/masks/val"
 
-test_images_path:"/content/drive/MyDrive/unet_data/isbi/images/test"
+test_images_path:"TAO_DATA_PATH/isbi/images/test"
 
 data_class_config {
   target_classes {

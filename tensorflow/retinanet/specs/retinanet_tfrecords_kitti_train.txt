@@ -1,5 +1,5 @@
 kitti_config {
-  root_directory_path: "/content/drive/MyDrive/pointpillars_data/"
+  root_directory_path: "TAO_DATA_PATH/"
   image_dir_name: "training/image_2"
   label_dir_name: "training/label_2"
   image_extension: ".png"
@@ -8,7 +8,7 @@ kitti_config {
   val_split: 0
   num_shards: 10
 }
-image_directory_path: "/content/drive/MyDrive/pointpillars_data/"
+image_directory_path: "TAO_DATA_PATH/"
   target_class_mapping {
       key: "car"
       value: "car"

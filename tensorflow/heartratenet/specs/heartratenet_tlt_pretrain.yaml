@@ -1,6 +1,6 @@
 __class_name__: HeartRateNetTrainer
-checkpoint_dir: /results/heartratenet/model/
-results_dir: /results/heartratenet/
+checkpoint_dir: EXPERIMENT_DIR_PATH/model/
+results_dir: EXPERIMENT_DIR_PATH/
 random_seed: 32
 log_every_n_secs: 20
 checkpoint_n_epoch: 1
@@ -21,7 +21,7 @@ dataloader:
     image_width: 72
     data_format: channels_first
   dataset_info:
-    tfrecords_directory_path: /content/drive/MyDrive/heartratenet_data/processed
+    tfrecords_directory_path: TAO_DATA_PATH/processed
     tfrecord_folder_name: ''
     tfrecord_train_file_name: train.tfrecord
     tfrecord_test_file_name: test.tfrecord
@@ -38,7 +38,7 @@ model:
     use_batch_norm: False
     model_type: HRNet_release
     frozen_blocks: 0 # Freeze up the `nth` layer. Must be in range of [0, 5).
-    pretrained_model: /results/heartratenet/pretrain_models/heartratenet_vtrainable_v2.0/model.tlt
+    pretrained_model: EXPERIMENT_DIR_PATH/pretrain_models/heartratenet_vtrainable_v2.0/model.tlt
 loss:
   __class_name__: HeartRateNetLoss
   loss_function_name: MSE

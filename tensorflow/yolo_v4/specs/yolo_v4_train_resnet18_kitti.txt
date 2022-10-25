@@ -43,7 +43,7 @@ training_config {
       amsgrad: false
     }
   }
-  pretrain_model_path: "/results/yolo_v4/pretrained_resnet18/pretrained_object_detection_vresnet18/resnet_18.hdf5"
+  pretrain_model_path: "EXPERIMENT_DIR_PATH/pretrained_resnet18/pretrained_object_detection_vresnet18/resnet_18.hdf5"
 }
 eval_config {
   average_precision_mode: SAMPLE
@@ -72,8 +72,8 @@ augmentation_config {
 }
 dataset_config {
   data_sources: {
-      tfrecords_path: "/content/drive/MyDrive/pointpillars_data/training/tfrecords/train*"
-      image_directory_path: "/content/drive/MyDrive/pointpillars_data/training"
+      tfrecords_path: "TAO_DATA_PATH/training/tfrecords/train*"
+      image_directory_path: "TAO_DATA_PATH/training"
   }
   include_difficult_in_training: true
   image_extension: "png"

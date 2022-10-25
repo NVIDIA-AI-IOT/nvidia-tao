@@ -1,8 +1,8 @@
 {
     "org_dataset": "data",
     "mount_dir_path" :"",
-    "org_data_dir" : "/results/gesturenet/original",
-    "post_data_dir" : "/results/gesturenet/extracted",
+    "org_data_dir" : "TAO_DATA_PATH/original",
+    "post_data_dir" : "TAO_DATA_PATH/extracted",
     "kpi_users": ["id01","id02"],
     "sampling_rate": 1,
     "convert_bbox_square": true,

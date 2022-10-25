@@ -11,15 +11,15 @@ momentum: 0.9
 l2_weight_decay: 0.0001
 warmup_learning_rate: 0.0001
 init_learning_rate: 0.01
-pruned_model_path: "/results/mask_rcnn/experiment_dir_pruned/model.tlt"
+pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/model.tlt"
 
 data_config{
     image_size: "(832, 1344)"
     augment_input_data: True
     eval_samples: 500
-    training_file_pattern: "/content/drive/MyDrive/det_data/val*.tfrecord"
-    validation_file_pattern: "/content/drive/MyDrive/det_data/val*.tfrecord"
-    val_json_file: "/content/drive/MyDrive/det_data/annotations/instances_val2017.json"
+    training_file_pattern: "TAO_DATA_PATH/val*.tfrecord"
+    validation_file_pattern: "TAO_DATA_PATH/val*.tfrecord"
+    val_json_file: "TAO_DATA_PATH/annotations/instances_val2017.json"
 
     # dataset specific parameters
     num_classes: 91

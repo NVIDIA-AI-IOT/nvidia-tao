@@ -44,7 +44,7 @@ augmentation_config {
 }
 dataset_config {
   data_sources: {
-    tfrecords_path: "/content/drive/MyDrive/pointpillars_data/tfrecords/kitti_train*"
+    tfrecords_path: "TAO_DATA_PATH/tfrecords/kitti_train*"
   }
   include_difficult_in_training: true
   target_class_mapping {
@@ -68,7 +68,7 @@ dataset_config {
       value: "pedestrian"
   }
   validation_data_sources: {
-      image_directory_path: "/content/drive/MyDrive/pointpillars_data/val/image"
-      label_directory_path: "/content/drive/MyDrive/pointpillars_data/val/label"
+      image_directory_path: "TAO_DATA_PATH/val/image"
+      label_directory_path: "TAO_DATA_PATH/val/label"
   }
 }

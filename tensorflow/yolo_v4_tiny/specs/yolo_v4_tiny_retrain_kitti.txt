@@ -39,7 +39,7 @@ training_config {
       amsgrad: false
     }
   }
-  pruned_model_path: "/results/yolo_v4_tiny/experiment_dir_pruned/yolov4_cspdarknet_tiny_pruned.tlt"
+  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/yolov4_cspdarknet_tiny_pruned.tlt"
 }
 eval_config {
   average_precision_mode: SAMPLE
@@ -68,8 +68,8 @@ augmentation_config {
 }
 dataset_config {
   data_sources: {
-      tfrecords_path: "/content/drive/MyDrive/pointpillars_data/training/tfrecords/train*"
-      image_directory_path: "/content/drive/MyDrive/pointpillars_data/training"
+      tfrecords_path: "TAO_DATA_PATH/training/tfrecords/train*"
+      image_directory_path: "TAO_DATA_PATH/training"
   }
   include_difficult_in_training: true
   image_extension: "png"
