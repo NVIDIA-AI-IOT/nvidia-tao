@@ -11,7 +11,7 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 python3.6 -m pip install nvidia-pyindex
 
 # Install Tensorflow
-python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-tensorflow/nvidia_tensorflow-1.15.5+nv22.07-5236135-cp36-cp36m-linux_x86_64.whl
+python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-tensorflow/nvidia_tensorflow-1.15.5+nv22.09-6040196-cp36-cp36m-linux_x86_64.whl 
 
 # Install dependencies
 python3.6 -m pip install PATH_TO_GENERAL_WHL/*.whl
