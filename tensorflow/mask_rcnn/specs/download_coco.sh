@@ -37,13 +37,6 @@ fi
 
 #pip install Cython git+https://github.com/cocodataset/cocoapi#subdirectory=PythonAPI
 
-echo "Cloning Tensorflow models directory (for conversion utilities)"
-if [ ! -e tf-models ]; then
-  git clone http://github.com/tensorflow/models tf-models
-fi
-
-(cd tf-models/research && protoc object_detection/protos/*.proto --python_out=.)
-
 UNZIP="unzip -nq"
 
 # Create the output directories.
@@ -81,49 +74,7 @@ VAL_IMAGE_FILE="val2017.zip"
 download_and_unzip ${BASE_IMAGE_URL} ${VAL_IMAGE_FILE}
 VAL_IMAGE_DIR="${SCRATCH_DIR}/val2017"
 
-TEST_IMAGE_FILE="test2017.zip"
-download_and_unzip ${BASE_IMAGE_URL} ${TEST_IMAGE_FILE}
-TEST_IMAGE_DIR="${SCRATCH_DIR}/test2017"
-
 # Download the annotations.
 BASE_INSTANCES_URL="http://images.cocodataset.org/annotations"
 INSTANCES_FILE="annotations_trainval2017.zip"
 download_and_unzip ${BASE_INSTANCES_URL} ${INSTANCES_FILE}
-
-TRAIN_OBJ_ANNOTATIONS_FILE="${SCRATCH_DIR}/annotations/instances_train2017.json"
-VAL_OBJ_ANNOTATIONS_FILE="${SCRATCH_DIR}/annotations/instances_val2017.json"
-
-TRAIN_CAPTION_ANNOTATIONS_FILE="${SCRATCH_DIR}/annotations/captions_train2017.json"
-VAL_CAPTION_ANNOTATIONS_FILE="${SCRATCH_DIR}/annotations/captions_val2017.json"
-
-# Download the test image info.
-BASE_IMAGE_INFO_URL="http://images.cocodataset.org/annotations"
-IMAGE_INFO_FILE="image_info_test2017.zip"
-download_and_unzip ${BASE_IMAGE_INFO_URL} ${IMAGE_INFO_FILE}
-
-TESTDEV_ANNOTATIONS_FILE="${SCRATCH_DIR}/annotations/image_info_test-dev2017.json"
-
-# # Build TFRecords of the image data.
-cd "${CURRENT_DIR}"
-
-# Setup packages
-touch tf-models/__init__.py
-touch tf-models/research/__init__.py
-
-# Run our conversion
-SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
-
-PYTHONPATH="tf-models:tf-models/research" python $SCRIPT_DIR/create_coco_tf_record.py \
-  --logtostderr \
-  --include_masks \
-  --train_image_dir="${TRAIN_IMAGE_DIR}" \
-  --val_image_dir="${VAL_IMAGE_DIR}" \
-  --test_image_dir="${TEST_IMAGE_DIR}" \
-  --train_object_annotations_file="${TRAIN_OBJ_ANNOTATIONS_FILE}" \
-  --val_object_annotations_file="${VAL_OBJ_ANNOTATIONS_FILE}" \
-  --train_caption_annotations_file="${TRAIN_CAPTION_ANNOTATIONS_FILE}" \
-  --val_caption_annotations_file="${VAL_CAPTION_ANNOTATIONS_FILE}" \
-  --testdev_annotations_file="${TESTDEV_ANNOTATIONS_FILE}" \
-  --output_dir="${OUTPUT_DIR}"
-
-mv ${SCRATCH_DIR}/annotations/ ${OUTPUT_DIR}

@@ -19,7 +19,7 @@ data_config{
     eval_samples: 500
     training_file_pattern: "TAO_DATA_PATH/val*.tfrecord"
     validation_file_pattern: "TAO_DATA_PATH/val*.tfrecord"
-    val_json_file: "TAO_DATA_PATH/annotations/instances_val2017.json"
+    val_json_file: "TAO_DATA_PATH/raw-data/annotations/instances_val2017.json"
 
     # dataset specific parameters
     num_classes: 91
