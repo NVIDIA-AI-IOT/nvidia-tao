@@ -1,13 +1,5 @@
 #!/bin/sh
 
-# Update ubuntu to 20.04
-sudo apt update && sudo apt upgrade && sudo apt-get install libcudnn8 libcudnn8-dev libnccl-dev libnccl2 --allow-change-held-packages && sudo apt dist-upgrade
-sudo apt autoremove
-sudo apt install update-manager-core
-sudo ln -sf /usr/bin/python3.6 /usr/bin/python3
-export DEBIAN_FRONTEND=noninteractive
-sudo do-release-upgrade -f DistUpgradeViewNonInteractive
-
 # Install Python 3.6 as the default version
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update
@@ -26,8 +18,8 @@ python3.6 -m pip install google-colab
 python3.6 -m pip install nvidia-pyindex
 
 # Install Tensorflow
-sudo apt-get install -y cuda-compat-11-7
-python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-tensorflow/nvidia_tensorflow-1.15.5+nv22.07-5236135-cp36-cp36m-linux_x86_64.whl
+python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-horovod/nvidia_horovod-0.20.0+nv20.10-cp36-cp36m-linux_x86_64.whl
+python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-tensorflow/nvidia_tensorflow-1.15.4+nv20.10-cp36-cp36m-linux_x86_64.whl
 
 # Install Cmake
 cd /tmp

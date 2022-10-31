@@ -8,6 +8,7 @@ boto3==1.9.13
 clearml==1.7.1rc1
 cryptography==3.4.8
 future==0.17.1
+graphsurgeon
 grpcio==1.26.0
 h5py==2.8.0
 jupyter==1.0.0
