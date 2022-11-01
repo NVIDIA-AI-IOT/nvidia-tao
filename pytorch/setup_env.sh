@@ -16,7 +16,10 @@ ln -sf /usr/bin/python3.8 /usr/bin/python3
 
 python3.8 -m pip install --upgrade pip
 python3.8 -m pip install cython
+python3.8 -m pip install zmq requests pandas IPython portpicker google-auth
+python3.8 -m pip install --no-deps google-colab
 python3.8 -m pip install nvidia-pyindex
+python3.8 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
 
 cd /content
 git clone https://github.com/NVIDIA/NeMo.git
