@@ -40,7 +40,7 @@ chmod +x cmake-3.14.4-Linux-x86_64.sh
 rm ./cmake-3.14.4-Linux-x86_64.sh
 
 #Install KenLM
-cd PATH_TO_COLAB_NOTEBOOKS/pytorch
+cd PATH_TO_COLAB_NOTEBOOKS
 rm -rf kenlm
 tar -xzf kenlm.tar.gz
 mkdir kenlm/build
@@ -49,7 +49,7 @@ cmake ..
 make -j2
 chmod a+rx kenlm
 
-cd PATH_TO_COLAB_NOTEBOOKS/pytorch
+cd PATH_TO_COLAB_NOTEBOOKS
 apt install libeigen3-dev
 # Install KenLM python and pip requirements
 rm -rf kenlm-master
@@ -59,7 +59,7 @@ python3.8 -m pip install -e .
 
 
 #Install tao whls
-python3.8 -m pip install PATH_TO_GENERAL_WHL/nvidia_tao*.whl 
+python3.8 -m pip install PATH_TO_GENERAL_WHL/*.whl
 python3.8 -m pip install PATH_TO_CODEBASE_WHL/*.whl
 python3.8 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
 
