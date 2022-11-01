@@ -1,12 +1,15 @@
-astroid==2.4.2
+astroid==2.5.6
 ccimport
 cumm-cu114
+dataclasses
 easydict
 fire
 #https://gitlab-master.nvidia.com/zhimengf/tensorrt/-/raw/master/8.2.3.0/11.4/Ubuntu20_04-x64/whl/tensorrt-8.2.3.0-cp38-none-linux_x86_64.whl
 hydra-core==1.1.0
+isort==4.2.5
 lark
 lazy-import
+lazy_object_proxy==1.4.0
 librosa
 llvmlite==0.36.0
 lpips
@@ -37,3 +40,4 @@ tifffile
 torchmetrics>=0.4.1rc0
 transformers==4.8.2
 tokenizers==0.10.3
+unidecode==1.2.0
