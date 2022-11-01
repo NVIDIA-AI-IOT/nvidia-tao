@@ -1,8 +1,8 @@
-train_subjects: ['cohface_processed/1/0',
+train_subjects: ['data/cohface_processed/1/0',
 ]
-validation_subjects: ['cohface_processed/1/0',
+validation_subjects: ['data/cohface_processed/1/0',
 ]
-test_subjects: ['cohface_processed/1/0',
+test_subjects: ['data/cohface_processed/1/0',
 ]
 input_directory_path: TAO_DATA_PATH/
 data_directory_output_path: TAO_DATA_PATH/processed

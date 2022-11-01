@@ -4,6 +4,7 @@ warmup_steps: 1000
 learning_rate_steps: "[10000, 15000, 20000]"
 learning_rate_decay_levels: "[0.1, 0.02, 0.01]"
 total_steps: 25000
+num_examples_per_epoch: 5000
 train_batch_size: 2
 eval_batch_size: 4
 num_steps_per_eval: 5000
