@@ -17,7 +17,7 @@ retinanet_config {
   freeze_blocks: 0
 }
 training_config {
-  enable_qat: True
+  enable_qat: False
   pretrain_model_path: "EXPERIMENT_DIR_PATH/pretrained_resnet18/pretrained_object_detection_vresnet18/resnet_18.hdf5"
   batch_size_per_gpu: 8
   num_epochs: 10
