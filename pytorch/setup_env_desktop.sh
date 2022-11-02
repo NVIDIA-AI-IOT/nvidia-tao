@@ -27,13 +27,13 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 
 #Install KenLM
 cd PATH_TO_COLAB_NOTEBOOKS
-rm -rf kenlm
-tar -xzf kenlm.tar.gz
-mkdir kenlm/build
-cd kenlm/build
+rm -rf /kenlm
+sudo tar -xzf kenlm.tar.gz -C /
+sudo mkdir -p /kenlm/build
+cd /kenlm/build
 cmake ..
 make -j2
-chmod a+rx ../../kenlm
+sudo chmod a+rx /kenlm
 
 cd PATH_TO_COLAB_NOTEBOOKS
 apt install libeigen3-dev
