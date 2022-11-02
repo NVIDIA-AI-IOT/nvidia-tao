@@ -12,8 +12,8 @@ apt-get install python3.8-dev
 
 #Set python3.8 as the default version
 rm /usr/bin/python3
-ln -sf /usr/bin/python3.8 /usr/local/bin/python
 ln -sf /usr/bin/python3.8 /usr/bin/python3
+ln -sf /usr/bin/python3.8 /usr/local/bin/python
 
 python3.8 -m pip install --upgrade pip
 python3.8 -m pip install cython
@@ -47,15 +47,13 @@ mkdir kenlm/build
 cd kenlm/build
 cmake ..
 make -j2
-chmod a+rx kenlm
+chmod a+rx ../../kenlm
 
 cd PATH_TO_COLAB_NOTEBOOKS
 apt install libeigen3-dev
 # Install KenLM python and pip requirements
 rm -rf kenlm-master
-unzip -q master.zip
-cd kenlm-master/
-python3.8 -m pip install -e .
+python3.8 -m pip install master.zip
 
 
 #Install tao whls

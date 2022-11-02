@@ -33,16 +33,13 @@ mkdir kenlm/build
 cd kenlm/build
 cmake ..
 make -j2
-chmod a+rx kenlm
+chmod a+rx ../../kenlm
 
 cd PATH_TO_COLAB_NOTEBOOKS
 apt install libeigen3-dev
 # Install KenLM python and pip requirements
 rm -rf kenlm-master
-unzip -q master.zip
-cd kenlm-master/
-python3.8 -m pip install -e .
-
+python3.8 -m pip install master.zip
 
 #Install tao whls
 python3.8 -m pip install PATH_TO_GENERAL_WHL/*.whl
