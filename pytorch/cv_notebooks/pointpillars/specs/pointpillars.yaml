@@ -1,7 +1,7 @@
 CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
 DATA_CONFIG: 
     DATASET: 'GeneralPCDataset'
-    DATA_PATH: '/content/drive/MyDrive/pointpillars_data/'
+    DATA_PATH: 'TAO_DATA_PATH/'
     DATA_SPLIT: {
         'train': train,
         'test': val
@@ -165,10 +165,10 @@ OPTIMIZATION:
 
 EVALUATION:
     BATCH_SIZE: 1
-    CKPT: "/results/pointpillars/ckpt/checkpoint_epoch_80.tlt"
+    CKPT: "EXPERIMENT_DIR_PATH/ckpt/checkpoint_epoch_80.tlt"
 
 INFERENCE:
     MAX_POINTS_NUM: 25000
     BATCH_SIZE: 1
-    CKPT: "/results/pointpillars/ckpt/checkpoint_epoch_80.tlt"
+    CKPT: "EXPERIMENT_DIR_PATH/ckpt/checkpoint_epoch_80.tlt"
     VIS_CONF_THRESH: 0.1

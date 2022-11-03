@@ -1,8 +1,8 @@
 conf_threshold: 0.5
 dataset_config:
   infer_data_sources:
-    image_dir: /data/coco2017/images/val2017/
-    json_file: /data/coco2017/annotations/instances_val2017.json
+    image_dir: TAO_DATA_PATH/raw-data/val2017/
+    json_file: TAO_DATA_PATH/raw-data/annotations/instances_val2017.json
   num_classes: 91
   batch_size: 8
   workers: 8

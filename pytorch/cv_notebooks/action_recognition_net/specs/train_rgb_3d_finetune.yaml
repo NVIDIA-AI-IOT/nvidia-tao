@@ -18,8 +18,8 @@ train_config:
   epochs: 20
   checkpoint_interval: 1
 dataset_config:
-  train_dataset_dir: /content/data/train
-  val_dataset_dir: /content/data/test
+  train_dataset_dir: TAO_DATA_PATH/train
+  val_dataset_dir: TAO_DATA_PATH/test
   label_map:
     fall_floor: 0
     ride_bike: 1
