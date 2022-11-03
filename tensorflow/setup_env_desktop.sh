@@ -12,10 +12,11 @@ python3.6 -m pip install nvidia-pyindex
 
 # Install Tensorflow
 python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-tensorflow/nvidia_tensorflow-1.15.5+nv22.09-6040196-cp36-cp36m-linux_x86_64.whl 
+python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-horovod/nvidia_horovod-0.25.0+nv22.09-6040196-cp38-cp38-linux_x86_64.whl
 
 # Install dependencies
-python3.6 -m pip install PATH_TO_GENERAL_WHL/*.whl
-python3.6 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
+python3.6 -m pip install /home_duplicate/rarunachalam/colab_notebooks/tensorflow/general_whl/*.whl
+python3.6 -m pip install --ignore-installed PyYAML -r /home_duplicate/rarunachalam/colab_notebooks/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
-python3.6 -m pip install PATH_TO_CODEBASE_WHL/*.whl
+python3.6 -m pip install /home_duplicate/rarunachalam/colab_notebooks/tensorflow/codebase_whl/*.whl
