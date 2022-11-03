@@ -13,13 +13,13 @@ def main():
     parser = argparse.ArgumentParser(description='Create a subset for kitti')
     parser.add_argument("--source-data-dir", type=str)
     parser.add_argument("--out-data-dir", type=str)
-    parser.add_argument("--training", type=bool)
+    parser.add_argument("--training", type=bool, default=False)
     parser.add_argument("--num-images", type=int)
     args = parser.parse_args()
     
     source_data_dir = args.source_data_dir
     out_data_dir = args.out_data_dir
-    training_flag = args.training
+    training_flag = bool(args.training)
     num_images = args.num_images
 
     # source_data_dir should contain the folders calib, image_2, label_2, velodyne
@@ -44,27 +44,28 @@ def main():
         os.makedirs(os.path.join(out_data_dir,"calib"))
     if not os.path.exists(os.path.join(out_data_dir,"image_2")):
         os.makedirs(os.path.join(out_data_dir,"image_2"))
-    if not os.path.exists(os.path.join(out_data_dir,"label_2")):
-        os.makedirs(os.path.join(out_data_dir,"label_2"))
+    if training_flag:
+      if not os.path.exists(os.path.join(out_data_dir,"label_2")):
+          os.makedirs(os.path.join(out_data_dir,"label_2"))
     if not os.path.exists(os.path.join(out_data_dir,"velodyne")):
         os.makedirs(os.path.join(out_data_dir,"velodyne"))
 
-    all_ids = os.listdir(os.path.join(source_data_dir,"calib"))
+    all_ids = os.listdir(os.path.join(source_data_dir,"image_2"))
     shuffle(all_ids)
 
     selected_ids = all_ids[:num_images]
-    selected_ids = [id.replace('.txt', '') for id in selected_ids]
+    selected_ids = [id.replace('.png', '') for id in selected_ids]
 
     print(selected_ids)
-    exit()
 
     for id in tqdm(selected_ids):
         calib = source_data_dir + "/calib/" + str(id) + "*"
         os.system("cp " + calib + " " + out_data_dir + "/calib/")
         image = source_data_dir + "/image_2/" + str(id) + "*"
         os.system("cp " + image + " " + out_data_dir + "/image_2/")
-        label = source_data_dir + "/label_2/" + str(id) + "*"
-        os.system("cp " + label + " " + out_data_dir + "/label_2/")
+        if training_flag:
+          label = source_data_dir + "/label_2/" + str(id) + "*"
+          os.system("cp " + label + " " + out_data_dir + "/label_2/")
         velodyne = source_data_dir + "/velodyne/" + str(id) + "*"
         os.system("cp " + velodyne + " " + out_data_dir + "/velodyne/")
 

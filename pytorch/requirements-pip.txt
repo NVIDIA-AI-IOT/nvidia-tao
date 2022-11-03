@@ -34,7 +34,7 @@ pytorch-msssim
 pyyaml
 scikit-image
 soundfile
-spconv-cu114==2.1.21
+spconv-cu114
 tensorboardX
 tensorrt
 tifffile
