@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt -qq install -y sox
+sudo apt -qq install -y sox
 
 python3.8 -m pip install --upgrade pip
 python3.8 -m pip install cython
@@ -12,10 +12,10 @@ cd content
 git clone https://github.com/NVIDIA/NeMo.git
 cd NeMo
 git reset --hard e856e9732af79a6ed4bffaa3d709bfa387799587
-cp PATH_TO_COLAB_NOTEBOOKS/pytorch/nemo_nlp_model.patch /opt/nemo_nlp_model.patch
+sudo cp PATH_TO_COLAB_NOTEBOOKS/pytorch/nemo_nlp_model.patch /opt/nemo_nlp_model.patch
 git apply /opt/nemo_nlp_model.patch
 ./reinstall.sh
-rm -rf /opt/nemo_nlp_model.patch
+sudo rm -rf /opt/nemo_nlp_model.patch
 
 # Install Cmake
 sudo mkdir -p /tmp_dir_cmake && sudo chmod -R 777 /tmp_dir_cmake
@@ -29,7 +29,7 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 sudo apt-get install libbz2-dev liblzma-dev -y
 sudo apt install build-essential libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev
 cd PATH_TO_COLAB_NOTEBOOKS
-rm -rf /kenlm
+sudo rm -rf /kenlm
 sudo tar -xzf kenlm.tar.gz -C /
 sudo mkdir -p /kenlm/build
 cd /kenlm/build
