@@ -22,13 +22,13 @@
 # http://cocodataset.org/#overview for an overview of the dataset.
 #
 # usage:
-#  bash download_and_preprocess_coco.sh /data-dir/coco
+#  bash download_coco.sh /data-dir/coco
 set -e
 set -x
 
 
 if [ -z "$1" ]; then
-  echo "usage download_and_preprocess_coco.sh [data dir]"
+  echo "usage download_coco.sh [data dir]"
   exit
 fi
 
