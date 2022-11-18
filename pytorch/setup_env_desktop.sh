@@ -27,7 +27,7 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 
 #Install KenLM
 sudo apt-get install libbz2-dev liblzma-dev -y
-sudo apt install build-essential libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev
+sudo apt install build-essential libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev -y
 cd PATH_TO_COLAB_NOTEBOOKS
 sudo rm -rf /kenlm
 sudo tar -xzf kenlm.tar.gz -C /
@@ -38,7 +38,7 @@ sudo make -j2
 sudo chmod a+rx /kenlm
 
 cd PATH_TO_COLAB_NOTEBOOKS
-apt install libeigen3-dev
+apt install libeigen3-dev -y
 # Install KenLM python and pip requirements
 rm -rf kenlm-master
 python3.8 -m pip install master.zip
