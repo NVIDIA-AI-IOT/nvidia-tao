@@ -1,0 +1,400 @@
+random_seed: 42
+dataset_config {
+  image_extension: "jpg"
+  target_class_mapping {
+    key: "AutoMobile"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "Automobile"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "Bicycle"
+    value: "bicycle"
+  }
+  target_class_mapping {
+    key: "Heavy Truck"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "Motorcycle"
+    value: "bicycle"
+  }
+  target_class_mapping {
+    key: "Person"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "Person Group"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "Rider"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "Road sign"
+    value: "road_sign"
+  }
+  target_class_mapping {
+    key: "Vehicle"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "automobile"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "bicycle"
+    value: "bicycle"
+  }
+  target_class_mapping {
+    key: "heavy_truck"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "largevehicle"
+    value: "car"
+  }
+  target_class_mapping {
+    key: "motorcycle"
+    value: "bicycle"
+  }
+  target_class_mapping {
+    key: "person"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "person group"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "person_group"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "rider"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "road sign"
+    value: "road_sign"
+  }
+  target_class_mapping {
+    key: "road_sign"
+    value: "road_sign"
+  }
+  target_class_mapping {
+    key: "traffic_light"
+    value: "road_sign"
+  }
+  target_class_mapping {
+    key: "twowheeler"
+    value: "bicycle"
+  }
+  target_class_mapping {
+    key: "vehicle"
+    value: "car"
+  }
+}
+augmentation_config {
+  preprocessing {
+    output_image_width: 960
+    output_image_height: 544
+    crop_right: 960
+    crop_bottom: 544
+    min_bbox_width: 1.0
+    min_bbox_height: 1.0
+    output_image_channel: 3
+  }
+  spatial_augmentation {
+    hflip_probability: 0.5
+    zoom_min: 1.0
+    zoom_max: 1.0
+    translate_max_x: 8.0
+    translate_max_y: 8.0
+  }
+  color_augmentation {
+    hue_rotation_max: 25.0
+    saturation_shift_max: 0.20000000298
+    contrast_scale_max: 0.10000000149
+    contrast_center: 0.5
+  }
+}
+postprocessing_config {
+  target_class_config {
+    key: "bicycle"
+    value {
+      clustering_config {
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.25
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  target_class_config {
+    key: "car"
+    value {
+      clustering_config {
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.129999995232
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  target_class_config {
+    key: "person"
+    value {
+      clustering_config {
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.264999985695
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  target_class_config {
+    key: "road_sign"
+    value {
+      clustering_config {
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.15000000596
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+}
+model_config {
+  num_layers: 18
+  use_batch_norm: true
+  objective_set {
+    bbox {
+      scale: 35.0
+      offset: 0.5
+    }
+    cov {
+    }
+  }
+  training_precision {
+    backend_floatx: FLOAT32
+  }
+  arch: "resnet"
+  load_graph: true
+}
+evaluation_config {
+  validation_period_during_training: 10
+  first_validation_epoch: 60
+  minimum_detection_ground_truth_overlap {
+    key: "bicycle"
+    value: 0.5
+  }
+  minimum_detection_ground_truth_overlap {
+    key: "car"
+    value: 0.600000023842
+  }
+  minimum_detection_ground_truth_overlap {
+    key: "person"
+    value: 0.699999988079
+  }
+  minimum_detection_ground_truth_overlap {
+    key: "road_sign"
+    value: 0.5
+  }
+  evaluation_box_config {
+    key: "bicycle"
+    value {
+      minimum_height: 20
+      maximum_height: 9999
+      minimum_width: 10
+      maximum_width: 9999
+    }
+  }
+  evaluation_box_config {
+    key: "car"
+    value {
+      minimum_height: 20
+      maximum_height: 9999
+      minimum_width: 10
+      maximum_width: 9999
+    }
+  }
+  evaluation_box_config {
+    key: "person"
+    value {
+      minimum_height: 20
+      maximum_height: 9999
+      minimum_width: 10
+      maximum_width: 9999
+    }
+  }
+  evaluation_box_config {
+    key: "road_sign"
+    value {
+      minimum_height: 20
+      maximum_height: 9999
+      minimum_width: 10
+      maximum_width: 9999
+    }
+  }
+  average_precision_mode: INTEGRATE
+}
+cost_function_config {
+  target_classes {
+    name: "car"
+    class_weight: 1.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 10.0
+    }
+  }
+  target_classes {
+    name: "bicycle"
+    class_weight: 1.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 1.0
+    }
+  }
+  target_classes {
+    name: "person"
+    class_weight: 2.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 10.0
+    }
+  }
+  target_classes {
+    name: "road_sign"
+    class_weight: 1.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 1.0
+    }
+  }
+  enable_autoweighting: true
+  max_objective_weight: 0.999899983406
+  min_objective_weight: 9.99999974738e-05
+}
+training_config {
+  visualizer {
+    enabled: false
+    num_images: 3
+    scalar_logging_frequency: 10
+    infrequent_logging_frequency: 1
+    target_class_config {
+      key: "car"
+      value: {
+        coverage_threshold: 0.005
+      }
+    }
+    target_class_config {
+      key: "pedestrian"
+      value: {
+        coverage_threshold: 0.005
+      }
+    }
+  }
+
+  batch_size_per_gpu: 16
+  num_epochs: 120
+  learning_rate {
+    soft_start_annealing_schedule {
+      min_learning_rate: 2.49999993684e-06
+      max_learning_rate: 0.000250000011874
+      soft_start: 0.10000000149
+      annealing: 0.699999988079
+    }
+  }
+  regularizer {
+    type: L1
+    weight: 3.00000002618e-09
+  }
+  optimizer {
+    adam {
+      epsilon: 9.99999993923e-09
+      beta1: 0.899999976158
+      beta2: 0.999000012875
+    }
+  }
+  cost_scaling {
+    initial_exponent: 20.0
+    increment: 0.005
+    decrement: 1.0
+  }
+  checkpoint_interval: 10
+}
+bbox_rasterizer_config {
+  target_class_config {
+    key: "bicycle"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 1.0
+      cov_radius_y: 1.0
+      bbox_min_radius: 1.0
+    }
+  }
+  target_class_config {
+    key: "car"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 0.40000000596
+      cov_radius_y: 0.40000000596
+      bbox_min_radius: 1.0
+    }
+  }
+  target_class_config {
+    key: "person"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 0.40000000596
+      cov_radius_y: 0.40000000596
+      bbox_min_radius: 1.0
+    }
+  }
+  target_class_config {
+    key: "road_sign"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 1.0
+      cov_radius_y: 1.0
+      bbox_min_radius: 1.0
+    }
+  }
+  deadzone_radius: 0.670000016689
+}

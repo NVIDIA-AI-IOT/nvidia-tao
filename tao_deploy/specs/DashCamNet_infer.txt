@@ -1,0 +1,108 @@
+inferencer_config{
+  # defining target class names for the experiment.
+  # Note: This must be mentioned in order of the networks classes.
+  target_classes: "car"
+  target_classes: "bicycle"
+  target_classes: "person"
+  target_classes: "road_sign"
+  # Inference dimensions.
+  image_width: 960
+  image_height: 544
+  # Must match what the model was trained for.
+  image_channels: 3
+  batch_size: 16
+  gpu_index: 0
+  stride: 16
+  # model handler config
+  tensorrt_config{
+    parser:  ETLT
+    etlt_model: "/home/scratch.p3/sean/tao_deploy_experiments/dashcam/xunlei/resnet18_dashcamnet_pruned.etlt"
+    backend_data_type: FP16
+    save_engine: true
+    trt_engine: "/home/scratch.p3/sean/tao_deploy_experiments/dashcam/xunlei/resnet18_dashcamnet_pruned.fp16.engine"
+    calibrator_config{
+        calibration_cache: "/home/projects1_metropolis/tmp/AU/Astro/astro_V1.3/INT8/CalibrationTable_Astro_V1.3_HQ"
+        n_batches: 10
+    }
+  }
+}
+bbox_handler_config{
+  disable_overlay: false
+  overlay_linewidth: 2
+  classwise_bbox_handler_config{
+    key:"car"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "car"
+      bbox_color{
+        R: 0
+        G: 255
+        B: 0
+      }
+      clustering_config{
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.129999995232
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+        dbscan_confidence_threshold: 0.9
+      }
+    }
+  }
+  classwise_bbox_handler_config{
+    key:"bicycle"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "bicycle"
+      bbox_color{
+        R: 0
+        G: 255
+        B: 255
+      }
+      clustering_config{
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.3
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+        dbscan_confidence_threshold: 0.9
+      }
+    }
+  }
+  classwise_bbox_handler_config{
+    key:"person"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "person"
+      bbox_color{
+        R: 255
+        G: 0
+        B: 0
+      }
+      clustering_config{
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.264999985695
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+        dbscan_confidence_threshold: 0.2
+      }
+    }
+  }
+  classwise_bbox_handler_config{
+    key:"road_sign"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "road_sign"
+      bbox_color{
+        R: 255
+        G: 0
+        B: 0
+      }
+      clustering_config{
+        coverage_threshold: 0.00499999988824
+        dbscan_eps: 0.15000000596
+        dbscan_min_samples: 0.0500000007451
+        minimum_bounding_box_height: 4
+        dbscan_confidence_threshold: 0.2
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+inferencer_config{
+  # defining target class names for the experiment.
+  # Note: This must be mentioned in order of the networks classes.
+  target_classes: "person"
+  target_classes: "bag"
+  target_classes: "face"
+  # Inference dimensions.
+  image_width: 1248
+  image_height: 384
+  # Must match what the model was trained for.
+  image_channels: 3
+  batch_size: 16
+  gpu_index: 0
+  stride: 16
+  # model handler config
+  tensorrt_config{
+	parser: ETLT  
+    etlt_model: "/home/projects1_metropolis/tmp/AU/PeopleNet/PeopleNetV2.3/results/resnet34/hr/peoplenet_V2.3_resnet34_hr_ph2/weights/peoplenet_V2.3_resnet34_hr_ph2.etlt"
+    backend_data_type: INT8
+    save_engine: true
+    trt_engine: "/home/projects1_metropolis/tmp/AU/PeopleNet/PeopleNetV2.3/inferences/resnet34/hr/peoplenet_V2.3_resnet34_hr_ph2/int8_dla_inference/peoplenet_V2.3_resnet34_hr_ph2_int8_dla.trt"
+    calibrator_config: {
+       calibration_cache: "/home/projects1_metropolis/tmp/AU/PeopleNet/PeopleNetV2.3/results/resnet34/hr/peoplenet_V2.3_resnet34_hr_ph2/weights/peoplenet_V2.3_resnet34_hr_ph2_dla.cache"
+       }
+	}
+}
+
+bbox_handler_config{
+  kitti_dump: true
+  disable_overlay: false
+  overlay_linewidth: 2
+  classwise_bbox_handler_config{
+    key:"person"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "person"
+      bbox_color{
+        R: 0
+        G: 255
+        B: 0
+      }
+      clustering_config{
+        clustering_algorithm: DBSCAN
+        coverage_threshold: 0.005
+        dbscan_confidence_threshold: 0.9
+        dbscan_eps: 0.3
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  classwise_bbox_handler_config{
+    key:"bag"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "bag"
+      bbox_color{
+        R: 0
+        G: 255
+        B: 255
+      }
+      clustering_config{
+        coverage_threshold: 0.00
+        clustering_algorithm: DBSCAN
+        dbscan_confidence_threshold: 0.9
+        dbscan_eps: 0.3
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  classwise_bbox_handler_config{
+    key:"face"
+    value: {
+      confidence_model: "aggregate_cov"
+      output_map: "face"
+      bbox_color{
+        R: 255
+        G: 0
+        B: 0
+      }
+      clustering_config{
+        coverage_threshold: 0.00
+        clustering_algorithm: DBSCAN
+        dbscan_confidence_threshold: 0.9
+        dbscan_eps: 0.3
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  classwise_bbox_handler_config{
+    key:"default"
+    value: {
+      confidence_model: "aggregate_cov"
+      bbox_color{
+        R: 255
+        G: 0
+        B: 0
+      }
+      clustering_config{
+        coverage_threshold: 0.005
+        clustering_algorithm: DBSCAN
+        dbscan_confidence_threshold: 0.9
+        dbscan_eps: 0.3
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+}
+
+
+
+

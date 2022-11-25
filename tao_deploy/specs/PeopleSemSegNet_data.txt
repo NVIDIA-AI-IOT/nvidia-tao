@@ -1,0 +1,8 @@
+/content/drive/MyDrive/tao_deploy/input_images/000227.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000246.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000252.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000254.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000263.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000265.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000266.jpg
+/content/drive/MyDrive/tao_deploy/input_images/000267.jpg

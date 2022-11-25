@@ -1,0 +1,446 @@
+random_seed: 42
+model_config {
+  num_layers: 34
+all_projections: true
+pretrained_model_file: "peoplenet_V2.2_resnet34_hr_ph1.tlt"
+load_graph:True
+arch: "resnet"
+  use_batch_norm: true
+  objective_set {
+    bbox {
+      scale: 35.0
+      offset: 0.5
+    }
+    cov {
+    }
+  }
+  training_precision {
+    backend_floatx: FLOAT32
+  }
+}
+bbox_rasterizer_config {
+  target_class_config {
+    key: "bag"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 0.4
+      cov_radius_y: 0.4
+      bbox_min_radius: 1.0
+    }
+  }
+  target_class_config {
+    key: "face"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 1.0
+      cov_radius_y: 1.0
+      bbox_min_radius: 1.0
+    }
+  }
+  target_class_config {
+    key: "person"
+    value {
+      cov_center_x: 0.5
+      cov_center_y: 0.5
+      cov_radius_x: 0.4
+      cov_radius_y: 0.4
+      bbox_min_radius: 1.0
+    }
+  }
+  deadzone_radius: 0.670000016689
+}
+cost_function_config {
+  target_classes {
+    name: "person"
+    class_weight: 1.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 10.0
+    }
+  }
+  target_classes {
+    name: "bag"
+    class_weight: 2.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 10.0
+    }
+  }
+  target_classes {
+    name: "face"
+    class_weight: 1.0
+    coverage_foreground_weight: 0.0500000007451
+    objectives {
+      name: "cov"
+      initial_weight: 1.0
+      weight_target: 1.0
+    }
+    objectives {
+      name: "bbox"
+      initial_weight: 10.0
+      weight_target: 1.0
+    }
+  }
+  enable_autoweighting: true
+  max_objective_weight: 0.999899983406
+  min_objective_weight: 9.99999974738e-05
+}
+training_config {
+  enable_qat: False
+  batch_size_per_gpu: 16
+  num_epochs: 120
+  learning_rate {
+    soft_start_annealing_schedule {
+      min_learning_rate: 4.99999987369e-06
+      max_learning_rate: 0.000500000023749
+      soft_start: 0.10000000149
+      annealing: 0.699999988079
+    }
+  }
+  regularizer {
+    type: L1
+    weight: 0.0
+  }
+  optimizer {
+    adam {
+      epsilon: 9.99999993923e-09
+      beta1: 0.899999976158
+      beta2: 0.999000012875
+    }
+  }
+  cost_scaling {
+    initial_exponent: 20.0
+    increment: 0.005
+    decrement: 1.0
+  }
+}
+augmentation_config {
+  preprocessing {
+  output_image_width: 960
+  output_image_height: 544
+  output_image_channel : 3
+  crop_right: 960
+  crop_bottom: 544
+  min_bbox_width: 1.0
+  min_bbox_height: 1.0
+  }
+  spatial_augmentation {
+    hflip_probability: 0.5
+    zoom_min: 1.0
+    zoom_max: 1.0
+    translate_max_x: 8.0
+    translate_max_y: 8.0
+  }
+  color_augmentation {
+    hue_rotation_max: 25.0
+    saturation_shift_max: 0.20000000298
+    contrast_scale_max: 0.10000000149
+    contrast_center: 0.5
+  }
+}
+postprocessing_config{
+  target_class_config{
+    key: "person"
+    value: {
+      clustering_config {
+        coverage_threshold: 0.005
+        dbscan_eps: 0.265
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  target_class_config{
+    key: "bag"
+    value: {
+      clustering_config {
+        coverage_threshold: 0.005
+        dbscan_eps: 0.15
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 4
+      }
+    }
+  }
+  target_class_config{
+    key: "face"
+    value: {
+      clustering_config {
+        coverage_threshold: 0.005
+        dbscan_eps: 0.15
+        dbscan_min_samples: 0.05
+        minimum_bounding_box_height: 2
+      }
+    }
+  }
+}
+dataset_config {
+
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0002-02_20180618/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0002/IVA-0002-02_20180618"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0002-08_20180618/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0002/IVA-0002-08_20180618"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0004-04_20180618/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0004/IVA-0004-04_20180618"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0004-05_20180618/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0004/IVA-0004-05_20180618"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0004-14_180524/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0004-14_and_IVA_0008-14_SJSU/IVA-0004-14_180524"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0007-01_180709/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0007-01_180709"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-01_180529/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0009/IVA-0009-01_180529"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0004-06_20180618/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0004/IVA-0004-06_20180618"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/Demo_Icetana_3_181207/*"
+  image_directory_path: "/home/projects2_metropolis/exports/Endeavour/Demo_Icetana_3_181207"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/Demo_Icetana_2_181116/*"
+  image_directory_path: "/home/projects2_metropolis/exports//Endeavour/Demo_Icetana_2_181116"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-02_180529/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0009/IVA-0009-02_180529"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-03_20180618/*"
+  image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0009/IVA-0009-03_20180618"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-04_180629/*"
+  image_directory_path: "/home/projects2_metropolis/exports/IVA-0009-04_180629"
+}
+#data_sources: {
+#  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-05_190314/*"
+#  image_directory_path: "/home/projects2_metropolis/datasets/IVAData2/datasets/IVA-0009-05_190314"
+#}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-06_190410/*"
+  image_directory_path: "/home/projects2_metropolis/exports/IVA-0009-06_190410"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-07_190314/*"
+  image_directory_path: "/home/projects2_metropolis/exports/IVA-0009-07_190314"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-08_180914/*"
+  image_directory_path: "/home/projects2_metropolis/exports/IVA-0009-08_180914"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-10_190328/*"
+  image_directory_path: "/home/projects2_metropolis/exports/IVA-0009-10_190328"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-11_190522/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/IVA-0009-11_190522"
+}
+#data_sources: {
+#  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-17_200812/*"
+#  image_directory_path: "datasets/astro_datasets/projects1_scratch/exports/processed/IVA-0009-17_200812"
+#}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-18_200128/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/IVA-0009-18_200128"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-20_190809/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/IVA-0009-20_190809"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-21_190924/*"
+  image_directory_path: "/home/projects2_metropolis/exports/IVA-0009-21_190924"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-23_191009/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/IVA-0009-23_191009"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-24_191125/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/IVA-0009-24_191125"
+}
+#data_sources: {
+#  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-25-1_200723/*"
+#  image_directory_path: "datasets/astro_datasets/projects1_scratch/exports/processed/IVA-0009-25-1_200723"
+#}
+#data_sources: {
+#  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-27_200723/*"
+#  image_directory_path: "datasets/astro_datasets/projects1_scratch/exports/processed/IVA-0009-27_200723"
+#}
+#data_sources: {
+#  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-28_200726/*"
+#  image_directory_path: "datasets/astro_datasets/projects1_scratch/exports/processed/IVA-0009-28_200726"
+#}
+#data_sources: {
+#  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0009-30_200727/*"
+#  image_directory_path: "datasets/astro_datasets/projects1_scratch/exports/processed/IVA-0009-30_200727"
+#}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/random_rotated_-15/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/rotation/random_rotated_-15"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/random_rotated_15/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/rotation/random_rotated_15"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/random_rotated_-45/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/rotation/random_rotated_-45"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/random_rotated_45/*"
+  image_directory_path:"/home/projects1_metropolis/datasets/primary/rotation/random_rotated_45"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/random_rotated_30/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/rotation/random_rotated_30"
+}
+data_sources: {
+  tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/random_rotated_-30/*"
+  image_directory_path: "/home/projects1_metropolis/datasets/primary/rotation/random_rotated_-30"
+}
+
+  image_extension: "jpg"
+  target_class_mapping {
+    key: "Person"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "Person Group"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "Rider"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "backpack"
+    value: "bag"
+  }
+  target_class_mapping {
+    key: "face"
+    value: "face"
+  }
+  target_class_mapping {
+    key: "large_bag"
+    value: "bag"
+  }
+  target_class_mapping {
+    key: "person"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "person group"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "person_group"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "personal_bag"
+    value: "bag"
+  }
+  target_class_mapping {
+    key: "rider"
+    value: "person"
+  }
+  target_class_mapping {
+    key: "rolling_bag"
+    value: "bag"
+  }
+  target_class_mapping {
+    key: "rollingbag"
+    value: "bag"
+  }
+  target_class_mapping {
+    key: "largebag"
+    value: "bag"
+  }
+  target_class_mapping {
+    key: "personalbag"
+    value: "bag"
+  }
+  validation_data_source: {
+    tfrecords_path: "/home/projects2_metropolis/datasets/maglev_tfrecords/person_bag_hres_final/IVA-0002-08_20180618/*"
+    image_directory_path: "/home/projects2_metropolis/datasets/people_face_test/IVA-0002/IVA-0002-08_20180618"
+  }
+}
+evaluation_config {
+  validation_period_during_training: 10
+  first_validation_epoch: 2
+  minimum_detection_ground_truth_overlap {
+    key: "bag"
+    value: 0.5
+  }
+  minimum_detection_ground_truth_overlap {
+    key: "face"
+    value: 0.5
+  }
+  minimum_detection_ground_truth_overlap {
+    key: "person"
+    value: 0.5
+  }
+
+  evaluation_box_config {
+    key: "bag"
+    value {
+      minimum_height: 40
+      maximum_height: 9999
+      minimum_width: 4
+      maximum_width: 9999
+    }
+  }
+  evaluation_box_config {
+    key: "face"
+    value {
+      minimum_height: 2
+      maximum_height: 9999
+      minimum_width: 2
+      maximum_width: 9999
+    }
+  }
+  evaluation_box_config {
+    key: "person"
+    value {
+      minimum_height: 40
+      maximum_height: 9999
+      minimum_width: 4
+      maximum_width: 9999
+    }
+  }
+
+
+  }

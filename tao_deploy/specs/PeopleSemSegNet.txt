@@ -1,0 +1,80 @@
+random_seed: 42
+model_config {
+  num_layers: 18
+  model_input_width: 960
+  model_input_height: 544
+  model_input_channels: 3
+all_projections: true
+arch: "vanilla_unet_dynamic"
+use_batch_norm: true
+training_precision {
+backend_floatx: FLOAT32
+  }
+}
+training_config {
+  batch_size: 1
+  epochs: 100
+  log_summary_steps: 100
+  checkpoint_interval: 1
+  loss: "cross_entropy"
+  learning_rate:0.00008
+  regularizer {
+    type: L2
+    weight: 1e-5
+  }
+  optimizer {
+    adam {
+      epsilon: 9.99999993923e-09
+      beta1: 0.899999976158
+      beta2: 0.999000012875
+    }
+  }
+  visualizer {
+  enabled: false
+  }
+  data_options: true
+}
+dataset_config {
+dataset: "custom"
+augment: False
+input_image_type: "color"
+train_data_sources: {
+  data_source: {
+    image_path: "/content/PeopleSemSegNet_inference.txt"
+    masks_path: "/home/projects1_metropolis/tmp/subha/texts_unet_astro_qa/IVA-0002-02_20180618_masks.txt"
+  }
+}
+val_data_sources: {
+data_source: {
+  image_path: "/content/PeopleSemSegNet_inference.txt"
+  masks_path: "/home/projects1_metropolis/tmp/subha/texts_unet_astro_qa/DSC_0001B_masks.txt"
+}
+}
+test_data_sources: {
+data_source: {
+  image_path: "/content/PeopleSemSegNet_inference.txt"
+}
+}
+data_class_config {
+target_classes {
+  name: "person"
+  mapping_class: "person"
+  label_id: 1
+}
+target_classes {
+  name: "background"
+  mapping_class: "background"
+  label_id: 0
+}
+target_classes {
+  name: "bag"
+  mapping_class: "background"
+  label_id: 2
+}
+target_classes {
+  name: "face"
+  mapping_class: "person"
+  label_id: 3
+}
+}
+}
