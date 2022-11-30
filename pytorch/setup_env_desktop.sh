@@ -38,7 +38,7 @@ sudo make -j2
 sudo chmod a+rx /kenlm
 
 cd PATH_TO_COLAB_NOTEBOOKS
-apt install libeigen3-dev -y
+sudo apt install libeigen3-dev -y
 # Install KenLM python and pip requirements
 rm -rf kenlm-master
 python3.8 -m pip install master.zip
