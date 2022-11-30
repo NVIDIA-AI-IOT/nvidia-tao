@@ -1,12 +1,11 @@
 import argparse
 import os
-from random import shuffle
 from tqdm import tqdm
 
 """
 Usage:
 python obtain_subset.py --source-data-dir=/home/user/data/training --out-data-dir=/home/user/subset_data/training/ --training True --num-images=100
-python obtain_subset.py --source-data-dir=/home/user/data/testing --out-data-dir=/home/user/subset_data/testing/ --training False --num-images=100
+python obtain_subset.py --source-data-dir=/home/user/data/testing --out-data-dir=/home/user/subset_data/testing/ --num-images=100
 """
 
 def main():
@@ -51,7 +50,6 @@ def main():
         os.makedirs(os.path.join(out_data_dir,"velodyne"))
 
     all_ids = os.listdir(os.path.join(source_data_dir,"image_2"))
-    shuffle(all_ids)
 
     selected_ids = all_ids[:num_images]
     selected_ids = [id.replace('.png', '') for id in selected_ids]
