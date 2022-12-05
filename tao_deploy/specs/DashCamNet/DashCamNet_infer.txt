@@ -16,12 +16,12 @@ inferencer_config{
   # model handler config
   tensorrt_config{
     parser:  ETLT
-    etlt_model: "/home/scratch.p3/sean/tao_deploy_experiments/dashcam/xunlei/resnet18_dashcamnet_pruned.etlt"
+    etlt_model: ""
     backend_data_type: FP16
     save_engine: true
-    trt_engine: "/home/scratch.p3/sean/tao_deploy_experiments/dashcam/xunlei/resnet18_dashcamnet_pruned.fp16.engine"
+    trt_engine: ""
     calibrator_config{
-        calibration_cache: "/home/projects1_metropolis/tmp/AU/Astro/astro_V1.3/INT8/CalibrationTable_Astro_V1.3_HQ"
+        calibration_cache: ""
         n_batches: 10
     }
   }

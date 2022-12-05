@@ -15,12 +15,12 @@ inferencer_config{
   # model handler config
   tensorrt_config{
 	parser: ETLT  
-    etlt_model: "/home/projects1_metropolis/tmp/AU/PeopleNet/PeopleNetV2.3/results/resnet34/hr/peoplenet_V2.3_resnet34_hr_ph2/weights/peoplenet_V2.3_resnet34_hr_ph2.etlt"
+    etlt_model: ""
     backend_data_type: INT8
     save_engine: true
-    trt_engine: "/home/projects1_metropolis/tmp/AU/PeopleNet/PeopleNetV2.3/inferences/resnet34/hr/peoplenet_V2.3_resnet34_hr_ph2/int8_dla_inference/peoplenet_V2.3_resnet34_hr_ph2_int8_dla.trt"
+    trt_engine: ""
     calibrator_config: {
-       calibration_cache: "/home/projects1_metropolis/tmp/AU/PeopleNet/PeopleNetV2.3/results/resnet34/hr/peoplenet_V2.3_resnet34_hr_ph2/weights/peoplenet_V2.3_resnet34_hr_ph2_dla.cache"
+       calibration_cache: ""
        }
 	}
 }

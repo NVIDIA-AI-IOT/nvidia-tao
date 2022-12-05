@@ -1,0 +1,59 @@
+model_config {
+  num_layers: 18
+  model_input_width: 960
+  model_input_height: 544
+  model_input_channels: 3
+  all_projections: true
+  arch: "vanilla_unet_dynamic"
+  use_batch_norm: true
+  training_precision {
+    backend_floatx: FLOAT32
+  }
+}
+dataset_config {
+  dataset: "custom"
+  augment: False
+  input_image_type: "color"
+  train_data_sources: {
+    data_source: {
+      image_path: "/content/PeopleSemSegNet_inference.txt"
+      masks_path: ""
+    }
+  }
+
+  val_data_sources: {
+    data_source: {
+      image_path: "/content/PeopleSemSegNet_inference.txt"
+      masks_path: ""
+    }
+  }
+  test_data_sources: {
+    data_source: {
+      image_path: "/content/PeopleSemSegNet_inference.txt"
+    }
+
+  }
+
+  data_class_config {
+    target_classes {
+      name: "person"
+      mapping_class: "person"
+      label_id: 1
+    }
+    target_classes {
+      name: "background"
+      mapping_class: "background"
+      label_id: 0
+    }
+    target_classes {
+      name: "bag"
+      mapping_class: "background"
+      label_id: 2
+    }
+    target_classes {
+      name: "face"
+      mapping_class: "person"
+      label_id: 3
+    }
+  }
+}

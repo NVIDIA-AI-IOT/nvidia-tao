@@ -190,6 +190,7 @@ postprocessing_config{
   }
 }
 dataset_config {
+
   image_extension: "jpg"
   target_class_mapping {
     key: "Person"
@@ -250,6 +251,10 @@ dataset_config {
   target_class_mapping {
     key: "personalbag"
     value: "bag"
+  }
+  validation_data_source: {
+    tfrecords_path: ""
+    image_directory_path: ""
   }
 }
 evaluation_config {

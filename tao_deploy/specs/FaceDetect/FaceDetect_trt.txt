@@ -1,17 +1,17 @@
 random_seed: 42
 dataset_config {
   data_sources {
-    tfrecords_path: "/workspace/lpd/tfrecords_640_480/*"
-    image_directory_path: "/workspace/lpd"
+    tfrecords_path: ""
+    image_directory_path: ""
   }
   image_extension: "jpg"
   target_class_mapping {
-    key: "lpd"
-    value: "lpd"
+    key: "face"
+    value: "face"
   }
   validation_data_source: {
-  tfrecords_path: "/workspace/lpd/tfrecords_3k_test/*"
-  image_directory_path: "/workspace/lpd"
+  tfrecords_path: ""
+  image_directory_path: ""
   }
 }
 augmentation_config {
@@ -38,7 +38,7 @@ augmentation_config {
 }
 postprocessing_config {
   target_class_config {
-    key: "lpd"
+    key: "face"
     value {
       clustering_config {
         coverage_threshold: 0.00499999988824
@@ -50,7 +50,7 @@ postprocessing_config {
   }
 }
 model_config {
-  pretrained_model_file: "/workspace/lpd/result_ga_retrain/weights/resnet18.tlt"
+  pretrained_model_file: ""
   num_layers: 18
   use_batch_norm: true
   load_graph: true
@@ -71,11 +71,11 @@ evaluation_config {
   validation_period_during_training: 5
   first_validation_epoch: 1
   minimum_detection_ground_truth_overlap {
-    key: "lpd"
+    key: "face"
     value: 0.699999988079
   }
   evaluation_box_config {
-    key: "lpd"
+    key: "face"
     value {
       minimum_height: 20
       maximum_height: 9999
@@ -87,7 +87,7 @@ evaluation_config {
 }
 cost_function_config {
   target_classes {
-    name: "lpd"
+    name: "face"
     class_weight: 1.0
     coverage_foreground_weight: 0.0500000007451
     objectives {
@@ -137,7 +137,7 @@ training_config {
 }
 bbox_rasterizer_config {
   target_class_config {
-    key: "lpd"
+    key: "face"
     value {
       cov_center_x: 0.5
       cov_center_y: 0.5

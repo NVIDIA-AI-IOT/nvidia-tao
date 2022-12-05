@@ -40,12 +40,12 @@ augmentation_config {
 }
 dataset_config {
   data_sources: {
-    label_directory_path: "/home/tylerz/tyler_rush/LPRNet/dataset/lpr_default_dataset/train/label"
-    image_directory_path: "/home/tylerz/tyler_rush/LPRNet/dataset/lpr_default_dataset/train/image"
+    label_directory_path: ""
+    image_directory_path: ""
   }
   characters_list_file: "/content/characters.txt"
   validation_data_sources: {
-    label_directory_path: "/home/tylerz/tyler_rush/LPRNet/dataset/lpr_default_dataset/test/label"
-    image_directory_path: "/home/tylerz/tyler_rush/LPRNet/dataset/lpr_default_dataset/test/image"
+    label_directory_path: ""
+    image_directory_path: ""
   }
 }
