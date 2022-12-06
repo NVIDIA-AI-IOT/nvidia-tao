@@ -96,16 +96,15 @@ Pre-trained Models TAO has published using [this Notebook](https://colab.researc
 
 ## Utility scripts to obtain subset of data
 
-On some occassions, you may have limited storage space or want to have training experiments completed quicker.
-For these purposes, we suggest to:
+If you have limited storage space, or want to iterate quickly through training experiments, it is advised to carry out the following:
+
 * Download data on to your local system
 
-* Run a utility script to obtain a subset of data
+* Run a utility script to generate a subset of the dataset
 
-* Upload this subset of data to the Google-Drive to run experiments on
+* Upload this smaller dataset to your Google Drive to run experiments on
 
-We provide utility scripts to obtain such a subset for COCO dataset which is around ~25 GB with ~120k images, and
-KITTI dataset which is around ~12 GB with ~14k images
+TAO Toolkit provides utility scripts to generate such subsets for COCO dataset (which is around ~25 GB with ~120k images) and KITTI dataset (which is around ~12 GB with ~14k images)
 
 <br>
 
