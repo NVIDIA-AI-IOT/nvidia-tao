@@ -32,6 +32,7 @@ pyquaternion
 pytorch-lightning==1.6.0
 pytorch-msssim
 pyyaml
+pynvml
 scikit-image
 soundfile
 spconv-cu114

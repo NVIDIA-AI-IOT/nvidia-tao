@@ -16,6 +16,7 @@ ln -sf /usr/bin/python3.8 /usr/local/bin/python
 #Install pip dependencies
 python3.8 -m pip install --upgrade pip
 python3.8 -m pip install cython
+python3.8 -m pip install pynvml
 python3.8 -m pip install nvidia-pyindex
 python3.8 -m pip install --upgrade setuptools
 python3.8 -m pip install pycuda==2020.1

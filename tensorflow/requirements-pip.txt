@@ -30,6 +30,7 @@ pyarrow==0.11.1
 pycocotools-fix==2.0.0.9
 pycuda==2020.1
 pyjwt
+pynvml
 PyYAML==5.4
 recordclass==0.13.1
 requests==2.20.1
