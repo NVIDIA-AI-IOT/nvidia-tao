@@ -44,8 +44,10 @@ rm -rf kenlm-master
 python3.8 -m pip install master.zip
 
 #Install tao whls
-python3.8 -m pip install PATH_TO_GENERAL_WHL/*.whl
-python3.8 -m pip install PATH_TO_CODEBASE_WHL/*.whl
+python3.8 -m pip install nvidia-eff-tao-encryption==0.1.7
+python3.8 -m pip install nvidia-eff==0.6.3
+python3.8 -m pip install nvidia-tao==4.0.0
+python3.8 -m pip install nvidia-tao-pytorch==b0
 python3.8 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
 
 #Reset some packages to required versions
