@@ -19,6 +19,7 @@ llvmlite==0.32.0
 mpi4py==3.0.3
 numba==0.47
 numpy==1.19.4
+nvidia-ml-py
 onnx==1.8.1
 onnxruntime==1.8.0
 onnx_graphsurgeon
@@ -30,7 +31,6 @@ pyarrow==0.11.1
 pycocotools-fix==2.0.0.9
 pycuda==2020.1
 pyjwt
-pynvml
 PyYAML==5.4
 recordclass==0.13.1
 requests==2.20.1
