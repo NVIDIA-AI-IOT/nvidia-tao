@@ -39,7 +39,6 @@ or an instance segmentation model.
 |---------------------------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 |Multi-class Image Classification |[Multi-class Image classification](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/classification/classification.ipynb)|Classification                                                                                                                                       |
 |Multi-task Image Classification  |[Multi-task Image Classification](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/multitask_classification/multitask_classification.ipynb)|Classification                                                                                                                                       |
-|Deformable DETR                  |[Object Detection using Deformable DETR](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/pytorch/cv_notebooks/deformable_detr/deformable_detr.ipynb)|Object Detection                                                                                                                                     |
 |DSSD                             |[Object Detection using Deformable DSSD](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/dssd/dssd.ipynb)|Object Detection                                                                                                                                     |
 |EfficientDet                     |[Object Detection using EfficientDet](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/efficientdet/efficientdet.ipynb)|Object Detection                                                                                                                                     |
 |RetinaNet                        |[Object Detection using RetinaNet](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/retinanet/retinanet.ipynb)|Object Detection                                                                                                                                     |
@@ -64,7 +63,6 @@ retrain them with your own data.
 |GestureNet           |[Gesture Recognition](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/gesturenet/gesturenet.ipynb)|Recognize hand gestures                                                                                                                              |
 |EmotionNet           |[Emotion Recognition](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/tensorflow/emotionnet/emotionnet.ipynb)|Recognize facial Emotion                                                                                                                             |
 |PoseClassificationNet|[Pose Classification](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/pytorch/cv_notebooks/pose_classification_net/poseclassificationnet.ipynb)|Classify poses of people from their skeletons                                                                                                        |
-|Pointpillars         |[3D LIDAR Object detection](https://colab.research.google.com/github/NVIDIA-AI-IOT/nvidia-tao/blob/main/pytorch/cv_notebooks/pointpillars/pointpillars.ipynb)|Detect objects from Lidar point cloud                                                                                                                |
 
 <br>
 
@@ -138,21 +136,15 @@ TAO Toolkit provides utility scripts to generate such subsets for COCO dataset (
   python generate_kitti_subset.py --source-data-dir=/home/user/data/testing --out-data-dir=/home/user/subset_data/testing/ --num-images=100
   ```
 
-The same procedure and arguments are applicable to obtain subset for pointpillars data, except the file to run is present [here](https://github.com/NVIDIA-AI-IOT/nvidia-tao/blob/main/pytorch/util/obtain_subset.py). For pointpillars, we need KITTI with velodyne and calib also downloaded
-
 Dataset folder structure for kitti:
 
 ```
   path_to_training_folder
-  |___calib (only for pointpillars)
   |___image_2
   |___label_2
-  |___velodyne (only for pointpillars)
 
   path_to_testing_folder
-  |___calib (only for pointpillars)
   |___image_2
-  |___velodyne (only for pointpillars)
 ```
 
 <br>
