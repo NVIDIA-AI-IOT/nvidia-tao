@@ -2,10 +2,10 @@
 
 sudo apt -qq install -y sox
 
-python3.8 -m pip install --upgrade pip
-python3.8 -m pip install cython
-python3.8 -m pip install nvidia-pyindex
-python3.8 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+python3.7 -m pip install --upgrade pip
+python3.7 -m pip install cython
+python3.7 -m pip install nvidia-pyindex
+python3.7 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
 
 mkdir content 
 cd content
@@ -41,17 +41,18 @@ cd PATH_TO_COLAB_NOTEBOOKS
 sudo apt install libeigen3-dev -y
 # Install KenLM python and pip requirements
 rm -rf kenlm-master
-python3.8 -m pip install master.zip
+python3.7 -m pip install master.zip
 
 #Install tao whls
-python3.8 -m pip install https://files.pythonhosted.org/packages/0e/32/6761e35c533d854ce7e5e51908bac3ae1488d94c110949e467345b28334c/nvidia_eff_tao_encryption-0.1.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-python3.8 -m pip install https://files.pythonhosted.org/packages/cf/ec/47f770919111bcd7047e463389e7f763afbc6ae7b96cbd4be974342a5bb1/nvidia_eff-0.6.2-py38-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-python3.8 -m pip install nvidia-tao==4.0.0
-python3.8 -m pip install nvidia-tao-pytorch==4.0.0.dev0
-python3.8 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
+python3.7 -m pip install https://files.pythonhosted.org/packages/0e/32/6761e35c533d854ce7e5e51908bac3ae1488d94c110949e467345b28334c/nvidia_eff_tao_encryption-0.1.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+python3.7 -m pip install nvidia-eff==0.6.3
+python3.7 -m pip install nvidia-tao==4.0.0
+python3.7 -m pip install nvidia-tao-pytorch==4.0.1.dev0
+python3.7 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
 
 #Reset some packages to required versions
-python3.8 -m pip install pytorch_lightning==1.6.0
-python3.8 -m pip install transformers==4.8.2
-python3.8 -m pip install tokenizers==0.10.3
-python3.8 -m pip install huggingface-hub==0.4.0
+python3.7 -m pip install pytorch_lightning==1.6.0
+python3.7 -m pip install transformers==4.8.2
+python3.7 -m pip install tokenizers==0.10.3
+python3.7 -m pip install huggingface-hub==0.4.0
+python3.7 -m pip install torchmetrics==0.10.3
