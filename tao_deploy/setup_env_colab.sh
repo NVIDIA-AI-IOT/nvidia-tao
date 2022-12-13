@@ -20,7 +20,7 @@ python3.8 -m pip install nvidia-ml-py
 python3.8 -m pip install nvidia-pyindex
 python3.8 -m pip install --upgrade setuptools
 python3.8 -m pip install pycuda==2020.1
-python3.8 -m pip install nvidia-eff-tao-encryption==0.1.7
+python3.8 -m pip install https://files.pythonhosted.org/packages/d1/c2/c14dd8884a5bc05ca07331b3d78a92812eb19e25a625a0b59af8b609a93f/nvidia_eff_tao_encryption-0.1.7-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 python3.8 -m pip install nvidia-eff==0.6.2
 python3.8 -m pip install cffi
 
@@ -31,4 +31,4 @@ python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/graphsurgeon/graphsurg
 python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/uff/uff*.whl
 
 #Install TAO deploy whl
-python3.8 -m pip install nvidia_tao_deploy==4.0.0
+python3.8 -m pip install nvidia-tao-deploy==4.0.0.1
