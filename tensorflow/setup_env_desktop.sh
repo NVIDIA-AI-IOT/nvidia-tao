@@ -20,4 +20,4 @@ python3.6 -m pip install nvidia-tao==4.0.0
 python3.6 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
-python3.6 -m pip install nvidia-tao-tf1==4.0.0
+python3.6 -m pip install nvidia-tao-tf1==4.0.0.657.dev0 
