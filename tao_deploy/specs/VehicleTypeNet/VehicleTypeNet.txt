@@ -1,0 +1,52 @@
+eval_config {
+  eval_dataset_path: ""
+  model_path: ""
+  top_k: 1
+  batch_size: 128
+  n_workers: 8
+}
+model_config {
+  arch: "resnet"
+  n_layers: 18
+  retain_head: False
+  use_batch_norm: True
+  use_bias: False
+  use_pooling: False
+  all_projections: True
+  freeze_bn: False
+  freeze_blocks: 0
+  input_image_size: "3,224,224"
+}
+train_config {
+  random_seed: 42
+  train_dataset_path: ""
+  val_dataset_path: ""
+  pretrained_model_path: ""
+   optimizer {
+    sgd {
+    lr: 0.01
+    decay: 0.0
+    momentum: 0.9
+    nesterov: False
+  }
+}
+  batch_size_per_gpu: 128
+  n_epochs: 80
+  n_workers: 16
+ 
+  # regularizer
+  reg_config {
+    type: "none"
+    scope: "Conv2D,Dense"
+    weight_decay: 0.00005
+  }
+ 
+  # learning_rate
+   lr_config {
+    step {
+      learning_rate: 0.006
+      step_size: 10
+      gamma: 0.1
+    }
+   }
+}

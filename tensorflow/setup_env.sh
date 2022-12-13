@@ -29,9 +29,10 @@ chmod +x cmake-3.14.4-Linux-x86_64.sh
 rm ./cmake-3.14.4-Linux-x86_64.sh
 
 # Install dependencies
-python3.6 -m pip install  PATH_TO_GENERAL_WHL/*.whl
+python3.6 -m pip install nvidia-eff==0.5.3
+python3.6 -m pip install nvidia-tao==4.0.0
 python3.6 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
-python3.6 -m pip install PATH_TO_CODEBASE_WHL/*.whl
+python3.6 -m pip install nvidia-tao-tf1==4.0.0.657.dev0 
 
