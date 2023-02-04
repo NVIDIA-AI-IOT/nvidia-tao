@@ -53,4 +53,5 @@ uplink==0.5.5
 uff
 urllib3<1.25
 xmltodict==0.12.0
+wandb==0.12.17
 git+https://github.com/NVIDIA/dllogger.git

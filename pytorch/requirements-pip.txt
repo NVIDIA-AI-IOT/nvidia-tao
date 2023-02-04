@@ -43,3 +43,4 @@ torchmetrics>=0.4.1rc0
 transformers==4.8.2
 tokenizers==0.10.3
 unidecode==1.2.0
+wandb==0.12.17
