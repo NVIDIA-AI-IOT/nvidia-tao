@@ -31,6 +31,7 @@ cp PATH_TO_COLAB_NOTEBOOKS/pytorch/nemo_nlp_model.patch /opt/nemo_nlp_model.patc
 git apply /opt/nemo_nlp_model.patch
 ./reinstall.sh
 rm -rf /opt/nemo_nlp_model.patch
+python3.7 -m pip uninstall tokenizers -y
 
 #Install Cmake
 cd /tmp
@@ -39,26 +40,9 @@ chmod +x cmake-3.14.4-Linux-x86_64.sh
 ./cmake-3.14.4-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license
 rm ./cmake-3.14.4-Linux-x86_64.sh
 
-#Install KenLM
-cd PATH_TO_COLAB_NOTEBOOKS
-rm -rf /kenlm
-sudo tar -xzf kenlm.tar.gz -C /
-sudo mkdir -p /kenlm/build
-cd /kenlm/build
-cmake ..
-make -j2
-sudo chmod a+rx /kenlm
-
-cd PATH_TO_COLAB_NOTEBOOKS
-apt install libeigen3-dev
-# Install KenLM python and pip requirements
-rm -rf kenlm-master
-python3.7 -m pip install master.zip
-
-
 #Install tao whls
 python3.7 -m pip install https://files.pythonhosted.org/packages/01/f8/813d0043556caa07623d6e75c820580404caec78a3f2508e8ce4da32e4dd/nvidia_eff_tao_encryption-0.1.6-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-python3.7 -m pip install nvidia-eff==0.6.3
+python3.7 -m pip install --extra-index-url https://developer.download.nvidia.com/compute/redist nvidia-eff==0.6.3
 python3.7 -m pip install nvidia-tao==4.0.0
 python3.7 -m pip install nvidia-tao-pytorch==4.0.1.dev0
 

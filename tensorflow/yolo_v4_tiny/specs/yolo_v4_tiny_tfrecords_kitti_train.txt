@@ -1,11 +1,11 @@
 kitti_config {
-  root_directory_path: "TAO_DATA_PATH/training"
-  image_dir_name: "image_2"
-  label_dir_name: "label_2"
-  image_extension: ".png"
+  root_directory_path: "TAO_DATA_PATH/train"
+  image_dir_name: "images"
+  label_dir_name: "labels"
+  image_extension: ".jpg"
   partition_mode: "random"
   num_partitions: 2
   val_split: 14
   num_shards: 10
 }
-image_directory_path: "TAO_DATA_PATH/training"
+image_directory_path: "TAO_DATA_PATH/train"

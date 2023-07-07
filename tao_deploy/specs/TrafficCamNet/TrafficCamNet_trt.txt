@@ -194,7 +194,7 @@ evaluation_config {
   }
   minimum_detection_ground_truth_overlap {
     key: "car"
-    value: 0.600000023842
+    value: 0.600000027202
   }
   minimum_detection_ground_truth_overlap {
     key: "person"

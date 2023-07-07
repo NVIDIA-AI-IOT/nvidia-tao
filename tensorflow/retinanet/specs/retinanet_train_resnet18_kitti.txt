@@ -54,8 +54,8 @@ nms_config {
   top_k: 200
 }
 augmentation_config {
-    output_width: 1248
-    output_height: 384
+    output_width: 1280
+    output_height: 544
     output_channel: 3
 }
 dataset_config {
@@ -63,31 +63,23 @@ dataset_config {
     tfrecords_path: "TAO_DATA_PATH/tfrecords/kitti_train*"
   }
   target_class_mapping {
-      key: "car"
-      value: "car"
+      key: "forklift"
+      value: "forklift"
   }
   target_class_mapping {
-      key: "pedestrian"
-      value: "pedestrian"
+      key: "cone"
+      value: "cone"
   }
   target_class_mapping {
-      key: "cyclist"
-      value: "cyclist"
+      key: "fire_extinguisher"
+      value: "fire_extinguisher"
   }
   target_class_mapping {
-      key: "van"
-      value: "car"
-  }
-  target_class_mapping {
-      key: "person_sitting"
-      value: "pedestrian"
-  }
- target_class_mapping {
-      key: "truck"
-      value: "car"
+      key: "cart"
+      value: "cart"
   }
    validation_data_sources: {
-    image_directory_path: "TAO_DATA_PATH/val/image"
-    label_directory_path: "TAO_DATA_PATH/val/label"
+    image_directory_path: "TAO_DATA_PATH/val/images"
+    label_directory_path: "TAO_DATA_PATH/val/labels"
   } 
 }
