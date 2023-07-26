@@ -5,8 +5,8 @@ inferencer_config{
   target_classes: "bag"
   target_classes: "face"
   # Inference dimensions.
-  image_width: 1248
-  image_height: 384
+  image_width: 1280
+  image_height: 720
   # Must match what the model was trained for.
   image_channels: 3
   batch_size: 16

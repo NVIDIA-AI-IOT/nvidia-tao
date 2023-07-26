@@ -63,8 +63,8 @@ augmentation_config {
   vertical_flip:0
   horizontal_flip: 0.5
   jitter: 0.3
-  output_width: 1248
-  output_height: 384
+  output_width: 960
+  output_height: 544
   output_channel: 3
   randomize_input_shape_period: 0
   mosaic_prob: 0.5
@@ -72,30 +72,26 @@ augmentation_config {
 }
 dataset_config {
   data_sources: {
-      tfrecords_path: "TAO_DATA_PATH/training/tfrecords/train*"
-      image_directory_path: "TAO_DATA_PATH/training"
+      tfrecords_path: "TAO_DATA_PATH/train/tfrecords/train*"
+      image_directory_path: "TAO_DATA_PATH/train"
   }
   include_difficult_in_training: true
-  image_extension: "png"
+  image_extension: "jpg"
   target_class_mapping {
-      key: "car"
-      value: "car"
+      key: "forklift"
+      value: "forklift"
   }
   target_class_mapping {
-      key: "pedestrian"
-      value: "pedestrian"
+      key: "cone"
+      value: "cone"
   }
   target_class_mapping {
-      key: "cyclist"
-      value: "cyclist"
+      key: "fire_extinguisher"
+      value: "fire_extinguisher"
   }
   target_class_mapping {
-      key: "van"
-      value: "car"
-  }
-  target_class_mapping {
-      key: "person_sitting"
-      value: "pedestrian"
+      key: "cart"
+      value: "cart"
   }
   validation_fold: 0
 }

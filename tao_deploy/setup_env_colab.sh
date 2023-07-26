@@ -32,3 +32,4 @@ python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/uff/uff*.whl
 
 #Install TAO deploy whl
 python3.8 -m pip install nvidia-tao-deploy==4.0.0.1
+python3.8 -m pip install numpy==1.23.4
