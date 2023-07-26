@@ -1,8 +1,8 @@
 kitti_config {
   root_directory_path: "TAO_DATA_PATH/"
-  image_dir_name: "training/image_2"
-  label_dir_name: "training/label_2"
-  image_extension: ".png"
+  image_dir_name: "train/images"
+  label_dir_name: "train/labels"
+  image_extension: ".jpg"
   partition_mode: "random"
   num_partitions: 2
   val_split: 0
@@ -10,27 +10,18 @@ kitti_config {
 }
 image_directory_path: "TAO_DATA_PATH/"
   target_class_mapping {
-      key: "car"
-      value: "car"
+      key: "forklift"
+      value: "forklift"
   }
   target_class_mapping {
-      key: "pedestrian"
-      value: "pedestrian"
+      key: "cone"
+      value: "cone"
   }
   target_class_mapping {
-      key: "cyclist"
-      value: "cyclist"
+      key: "fire_extinguisher"
+      value: "fire_extinguisher"
   }
   target_class_mapping {
-      key: "van"
-      value: "car"
+      key: "cart"
+      value: "cart"
   }
-  target_class_mapping {
-      key: "person_sitting"
-      value: "pedestrian"
-  }
-  target_class_mapping {
-      key: "truck"
-      value: "car"
-  }
-

@@ -1,8 +1,8 @@
 kitti_config {
   root_directory_path: "TAO_DATA_PATH/val"
-  image_dir_name: "image"
-  label_dir_name: "label"
-  image_extension: ".png"
+  image_dir_name: "images"
+  label_dir_name: "labels"
+  image_extension: ".jpg"
   partition_mode: "random"
   num_partitions: 2
   val_split: 14
