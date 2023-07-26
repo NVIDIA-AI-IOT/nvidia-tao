@@ -16,6 +16,7 @@ ln -sf /usr/bin/python3.6 /usr/local/bin/python
 python3.6 -m pip install --upgrade pip
 python3.6 -m pip install google-colab
 python3.6 -m pip install nvidia-pyindex
+python3.6 -m pip install cython==0.27.3
 
 # Install Tensorflow
 python3.6 -m pip install https://developer.download.nvidia.com/compute/redist/nvidia-horovod/nvidia_horovod-0.20.0+nv20.10-cp36-cp36m-linux_x86_64.whl
