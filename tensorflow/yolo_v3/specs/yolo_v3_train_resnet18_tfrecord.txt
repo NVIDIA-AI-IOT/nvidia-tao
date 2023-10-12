@@ -16,7 +16,7 @@ yolov3_config {
 }
 training_config {
   batch_size_per_gpu: 8
-  num_epochs: 80
+  num_epochs: 10
   enable_qat: false
   checkpoint_interval: 10
   learning_rate {

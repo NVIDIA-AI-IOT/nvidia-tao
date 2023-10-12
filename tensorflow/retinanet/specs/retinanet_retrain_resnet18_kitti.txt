@@ -18,7 +18,7 @@ retinanet_config {
 }
 training_config {
   enable_qat: False
-  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/retinanet_resnet18_pruned.tlt"
+  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/retinanet_resnet18_pruned.hdf5"
   batch_size_per_gpu: 8
   num_epochs: 10
   n_workers: 2
