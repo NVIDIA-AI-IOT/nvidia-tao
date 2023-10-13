@@ -1,22 +1,11 @@
 #!/bin/sh
 
-sudo apt -qq install -y sox
+python3.8 -m pip install --upgrade pip
+python3.8 -m pip install Cython==0.29.36
+python3.8 -m pip install nvidia-pyindex
+python3.8 -m pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
 
-python3.7 -m pip install --upgrade pip
-python3.7 -m pip install cython
-python3.7 -m pip install nvidia-pyindex
-python3.7 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
-
-mkdir content 
-cd content
-git clone https://github.com/NVIDIA/NeMo.git
-cd NeMo
-git reset --hard e856e9732af79a6ed4bffaa3d709bfa387799587
-sudo cp PATH_TO_COLAB_NOTEBOOKS/pytorch/nemo_nlp_model.patch /opt/nemo_nlp_model.patch
-git apply /opt/nemo_nlp_model.patch
-./reinstall.sh
-sudo rm -rf /opt/nemo_nlp_model.patch
-python3.7 -m pip uninstall tokenizers -y
+sudo apt-get install build-essential libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev libeigen3-dev zlib1g-dev libbz2-dev liblzma-dev libsndfile1 sox libsox-fmt-mp3 ffmpeg libfreetype6 libopenblas-dev libssl-dev -y 
 
 # Install Cmake
 sudo mkdir -p /tmp_dir_cmake && sudo chmod -R 777 /tmp_dir_cmake
@@ -27,15 +16,10 @@ sudo ./cmake-3.14.4-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-
 rm ./cmake-3.14.4-Linux-x86_64.sh
 
 #Install tao whls
-python3.7 -m pip install https://files.pythonhosted.org/packages/0e/32/6761e35c533d854ce7e5e51908bac3ae1488d94c110949e467345b28334c/nvidia_eff_tao_encryption-0.1.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-python3.7 -m pip install --extra-index-url https://developer.download.nvidia.com/compute/redist nvidia-eff==0.6.3
-python3.7 -m pip install nvidia-tao==4.0.0
-python3.7 -m pip install nvidia-tao-pytorch==4.0.1.dev0
-python3.7 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
+python3.8 -m pip install nvidia-tao==5.0.0
+python3.8 -m pip install /content/drive/MyDrive/ColabNotebooks5.2/colab_notebooks/pytorch/*.whl
+python3.8 -m pip install Cython==0.29.36 && pip install --ignore-installed -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
+python3.8 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip-pytorch.txt
 
-#Reset some packages to required versions
-python3.7 -m pip install pytorch_lightning==1.6.0
-python3.7 -m pip install transformers==4.8.2
-python3.7 -m pip install tokenizers==0.10.3
-python3.7 -m pip install huggingface-hub==0.4.0
-python3.7 -m pip install torchmetrics==0.10.3
+python3.8 -m pip install pytest
+python3.8 -m pip install nvidia-ml-py==11.515.75
