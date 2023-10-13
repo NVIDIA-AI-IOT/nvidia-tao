@@ -1,5 +1,5 @@
 kitti_config {
-  root_directory_path: "/content/drive/MyDrive/kitti_data///train"
+  root_directory_path: "/TAO_DATA_PATH/train"
   image_dir_name: "images"
   label_dir_name: "labels"
   image_extension: ".jpg"
@@ -8,7 +8,7 @@ kitti_config {
   val_split: 0
   num_shards: 10
 }
-image_directory_path: "/content/drive/MyDrive/kitti_data///train"
+image_directory_path: "/TAO_DATA_PATH/train"
 target_class_mapping {
     key: "forklift"
     value: "forklift"
