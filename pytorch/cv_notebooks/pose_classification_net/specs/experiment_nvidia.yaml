@@ -36,7 +36,7 @@ train:
     - 10
     - 60
     lr_decay: 0.1
-  num_epochs: 70
+  num_epochs: 10
   checkpoint_interval: 5
 dataset_convert:
   pose_type: "3dbp"
