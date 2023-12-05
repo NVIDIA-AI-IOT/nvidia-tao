@@ -44,7 +44,7 @@ python3.8 -m pip install nvidia-tao==5.0.0
 python3.8 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
-python3.8 -m pip install /content/drive/MyDrive/ColabNotebooks5.0/colab_notebooks/tensorflow/nvidia_tao_tf1-5.0.0.1-py3-none-any.whl
+python3.8 -m pip install nvidia-tao-tf1==5.0.0
 
 python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/python/tensorrt-*-cp38-none-linux_x86_64.whl
 python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/onnx_graphsurgeon/onnx_graphsurgeon*.whl
