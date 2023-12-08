@@ -7,6 +7,7 @@ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/
 sudo dpkg -i cuda-keyring_1.0-1_all.deb
 sudo apt-get update
 sudo apt-get -y install cuda-12-0 -y
+sudo apt-get install git -y
 
 # Install Python 3.8
 sudo add-apt-repository ppa:deadsnakes/ppa -y
@@ -44,7 +45,13 @@ python3.8 -m pip install nvidia-tao==5.0.0
 python3.8 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
 # Install code related wheels
-python3.8 -m pip install nvidia-tao-tf1==5.0.0
+# python3.8 -m pip install nvidia-tao-tf1==5.0.0
+git clone https://github.com/NVIDIA/tao_tensorflow1_backend.git
+cd tao_tensorflow1_backend
+PYTHONPATH=${PWD} python3.8 release/docker/build_kernels.py
+PYTHONPATH=${PWD} python3.8 setup.py bdist_wheel
+python3.8 -m pip install dist/nvidia_tao_tf1-5.0.0.1-py3-none-any.whl
+cd -
 
 python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/python/tensorrt-*-cp38-none-linux_x86_64.whl
 python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/onnx_graphsurgeon/onnx_graphsurgeon*.whl
