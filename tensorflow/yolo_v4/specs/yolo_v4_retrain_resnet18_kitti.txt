@@ -21,7 +21,7 @@ yolov4_config {
 }
 training_config {
   batch_size_per_gpu: 8
-  num_epochs: 160
+  num_epochs: 10
   enable_qat: false
   checkpoint_interval: 10
   learning_rate {
@@ -43,7 +43,7 @@ training_config {
       amsgrad: false
     }
   }
-  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/yolov4_resnet18_pruned.tlt"
+  pruned_model_path: "EXPERIMENT_DIR_PATH/experiment_dir_pruned/yolov4_resnet18_pruned.hdf5"
 }
 eval_config {
   average_precision_mode: SAMPLE
