@@ -11,7 +11,7 @@ ssd_config {
 }
 training_config {
   batch_size_per_gpu: 32
-  num_epochs: 80
+  num_epochs: 10
   enable_qat: false
   learning_rate {
   soft_start_annealing_schedule {
