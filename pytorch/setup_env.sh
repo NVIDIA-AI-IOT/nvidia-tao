@@ -30,7 +30,7 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 
 #Install tao whls
 python3.8 -m pip install nvidia-tao==5.0.0
-python3.8 -m pip install nvidia-tao-pyt==5.1.0
+python3.8 -m pip install nvidia-tao-pytorch==5.1.0
 python3.8 -m pip install Cython==0.29.36 && pip install --ignore-installed -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip.txt
 python3.8 -m pip install --ignore-installed --no-deps -r PATH_TO_COLAB_NOTEBOOKS/pytorch/requirements-pip-pytorch.txt
 
