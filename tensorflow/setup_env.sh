@@ -49,6 +49,8 @@ python3.8 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/te
 git clone https://github.com/NVIDIA/tao_tensorflow1_backend.git
 cd tao_tensorflow1_backend
 PYTHONPATH=${PWD} python3.8 release/docker/build_kernels.py
+# Change the destination path based on your virtual environment
+cp -r /tmp/tao_tensorflow1_backend/nvidia_tao_tf1/core/processors/../lib/* /usr/local/lib/python3.8/dist-packages/nvidia_tao_tf1/core/processors/../lib/
 PYTHONPATH=${PWD} python3.8 setup.py bdist_wheel
 python3.8 -m pip install dist/nvidia_tao_tf1-5.0.0.1-py3-none-any.whl
 cd -
