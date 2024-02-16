@@ -44,8 +44,12 @@ rm ./cmake-3.14.4-Linux-x86_64.sh
 python3.8 -m pip install nvidia-tao==5.0.0
 python3.8 -m pip install --ignore-installed PyYAML -r PATH_TO_COLAB_NOTEBOOKS/tensorflow/requirements-pip.txt -f https://download.pytorch.org/whl/torch_stable.html --extra-index-url https://developer.download.nvidia.com/compute/redist
 
-# Install code related wheels
-# python3.8 -m pip install nvidia-tao-tf1==5.0.0
+python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/python/tensorrt-*-cp38-none-linux_x86_64.whl
+python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/onnx_graphsurgeon/onnx_graphsurgeon*.whl
+python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/graphsurgeon/graphsurgeon*.whl
+python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/uff/uff*.whl
+
+# Build code related wheel
 git clone https://github.com/NVIDIA/tao_tensorflow1_backend.git
 cd tao_tensorflow1_backend
 PYTHONPATH=${PWD} python3.8 release/docker/build_kernels.py
@@ -54,11 +58,6 @@ cp -r /tmp/tao_tensorflow1_backend/nvidia_tao_tf1/core/processors/../lib/* /usr/
 PYTHONPATH=${PWD} python3.8 setup.py bdist_wheel
 python3.8 -m pip install dist/nvidia_tao_tf1-5.0.0.1-py3-none-any.whl
 cd -
-
-python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/python/tensorrt-*-cp38-none-linux_x86_64.whl
-python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/onnx_graphsurgeon/onnx_graphsurgeon*.whl
-python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/graphsurgeon/graphsurgeon*.whl
-python3.8 -m pip install PATH_TO_TRT/TensorRT-TRT_VERSION/uff/uff*.whl
 
 python3.8 -m pip uninstall h5py psutil -y
 # Sometimes two versions of package is installed
