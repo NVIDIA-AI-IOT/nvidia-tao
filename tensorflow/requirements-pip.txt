@@ -15,8 +15,8 @@ nvidia-ml-py==11.515.75
 # downgrading to 1.17.0 due to a change in the dali tf plugin behaviour.
 nvidia-dali-cuda110==1.17.0
 nvidia_dali_tf_plugin_cuda110==1.17.0
-matplotlib>=3.0.3
-mpi4py>=3.0.3
+matplotlib==3.0.3
+mpi4py==3.0.3
 numpy==1.22.2
 numba==0.57.0rc1
 omegaconf==2.1.0
