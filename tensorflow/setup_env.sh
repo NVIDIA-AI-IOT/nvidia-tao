@@ -69,7 +69,9 @@ python3.8 -m pip install h5py==2.10.0 psutil
 python3.8 -m pip uninstall pycocotools -y
 python3.8 -m pip install pycocotools
 python3.8 -m pip install -v horovod==0.28.1
-python3.8 -m pip install numpy==1.22.2 protobuf==3.20.2
+python3.8 -m pip uninstall numpy -y
+python3.8 -m pip uninstall numpy -y
+python3.8 -m pip install numpy==1.23.5 protobuf==3.20.2
 
 # Add monkey patch lines manually
 lines_to_add="
@@ -87,3 +89,5 @@ if [ -f "$init_file" ]; then
 else
     echo "Error: $init_file does not exist."
 fi
+
+python3.8 -m pip install ipykernel
